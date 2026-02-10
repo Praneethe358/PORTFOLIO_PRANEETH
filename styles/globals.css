@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0b0f1a;
+  color: #c8c8c8;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b0f1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4a43a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f0c95c;
+}
+
+/* Accent text */
+.accent-text {
+  color: #d4a43a;
+}
+
+/* Section title accent line */
+.section-title {
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+  color: #d4a43a;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+}
+
+/* Card base */
+.card {
+  background: #131830;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  border-color: rgba(212, 164, 58, 0.3);
+  box-shadow: 0 8px 30px rgba(212, 164, 58, 0.08);
+}
+
+/* Button Styles */
+.btn-accent {
+  @apply px-7 py-3 rounded-full font-semibold text-sm tracking-wide transition-all duration-300;
+  background: linear-gradient(135deg, #d4a43a 0%, #b8882e 100%);
+  color: #0b0f1a;
+  border: none;
+}
+
+.btn-accent:hover {
+  background: linear-gradient(135deg, #f0c95c 0%, #d4a43a 100%);
+  box-shadow: 0 4px 20px rgba(212, 164, 58, 0.4);
+}
+
+.btn-outline {
+  @apply px-7 py-3 rounded-full font-semibold text-sm tracking-wide transition-all duration-300;
+  background: transparent;
+  color: #d4a43a;
+  border: 1.5px solid #d4a43a;
+}
+
+.btn-outline:hover {
+  background: rgba(212, 164, 58, 0.1);
+  box-shadow: 0 4px 20px rgba(212, 164, 58, 0.15);
+}
+
+/* Section Padding */
+.section {
+  @apply py-20 px-4 md:px-8 lg:px-16;
+}
+
+/* Portrait image styling */
+.portrait-clip {
+  clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+@media (max-width: 768px) {
+  .portrait-clip {
+    clip-path: none;
+    border-radius: 16px;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(212, 164, 58, 0.25);
+  color: #fff;
+}
