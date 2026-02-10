@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaGithub, FaLinkedinIn, FaEnvelope } from 'react-icons/fa';
 
 const hidden = { opacity: 0 };
@@ -18,6 +18,8 @@ const Hero = ({ animate: ready = false }: { animate?: boolean }) => {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const { scrollY } = useScroll();
+  const parallaxY = useTransform(scrollY, [0, 500], [0, 100]);
 
   useEffect(() => {
     if (!ready) return;
@@ -49,8 +51,11 @@ const Hero = ({ animate: ready = false }: { animate?: boolean }) => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-bg pt-20">
-      {/* Subtle animated background particles */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {/* Subtle animated background particles with parallax */}
+      <motion.div 
+        className="absolute inset-0 pointer-events-none overflow-hidden"
+        style={{ y: parallaxY }}
+      >
         {[...Array(3)].map((_, i) => (
           <motion.div
             key={i}
@@ -72,7 +77,7 @@ const Hero = ({ animate: ready = false }: { animate?: boolean }) => {
             }}
           />
         ))}
-      </div>
+      </motion.div>
 
       <div className="max-w-7xl mx-auto w-full px-4 md:px-8 lg:px-12">
         <div className="grid md:grid-cols-2 gap-8 items-center min-h-[80vh]">
@@ -128,9 +133,10 @@ const Hero = ({ animate: ready = false }: { animate?: boolean }) => {
             >
               <motion.a
                 href="#contact"
-                className="btn-accent inline-block"
-                whileHover={{ scale: 1.06, filter: 'brightness(1.15)' }}
-                whileTap={{ scale: 0.96 }}
+                className="btn-accent inline-block relative"
+                whileHover={{ scale: 1.08, filter: 'brightness(1.25)', boxShadow: '0 0 30px rgba(212, 164, 58, 0.6)' }}
+                whileTap={{ scale: 0.94 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
                 Hire Me
               </motion.a>

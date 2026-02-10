@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useRef } from 'react';
 import {
   Code,
   Database,
@@ -25,6 +26,8 @@ import {
 } from 'lucide-react';
 
 const Skills = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  
   // Category with icon and skills
   const proficiencies = [
     {
@@ -70,7 +73,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="section bg-bg py-8 md:py-10">
+    <section id="skills" className="section bg-bg py-8 md:py-10" ref={sectionRef}>
       <div className="max-w-5xl mx-auto px-4">
         {/* Section Title */}
         <motion.div
@@ -80,8 +83,19 @@ const Skills = () => {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-white italic mb-2">
-            Technical Proficiency
+          <h2 className="text-2xl md:text-3xl font-bold text-white italic mb-2 inline-block">
+            {'Technical Proficiency'.split('').map((char, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: i * 0.05 }}
+                viewport={{ once: true, margin: '-50px' }}
+                className="inline-block"
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            ))}
           </h2>
           <motion.div
             className="h-1 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto rounded-full"

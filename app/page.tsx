@@ -142,7 +142,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
       >
-        AI & Data Science
+        AI Data Scientist
       </motion.p>
 
       {/* Progress bar */}

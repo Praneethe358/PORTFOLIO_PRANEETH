@@ -23,15 +23,25 @@ const About = () => {
       className="section bg-bg-secondary/40 py-16 md:py-20 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Section Title — slides up */}
+        {/* Section Title — text reveal animation */}
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
           transition={{ duration: 0.7, ease }}
         >
-          <h2 className="section-title text-3xl md:text-4xl font-bold mb-3">
-            About Me
+          <h2 className="section-title text-3xl md:text-4xl font-bold mb-3 inline-block">
+            {'About Me'.split('').map((char, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.3, delay: i * 0.05 }}
+                className="inline-block"
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            ))}
           </h2>
           <motion.div
             className="h-1 bg-accent mx-auto rounded-full"

@@ -163,8 +163,19 @@ const Projects = () => {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="section-title text-3xl md:text-4xl font-bold mb-3">
-            Featured Projects
+          <h2 className="section-title text-3xl md:text-4xl font-bold mb-3 inline-block">
+            {'Featured Projects'.split('').map((char, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: i * 0.05 }}
+                viewport={{ once: true, margin: '-50px' }}
+                className="inline-block"
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            ))}
           </h2>
           <motion.div
             className="h-1 bg-accent mx-auto rounded-full"
