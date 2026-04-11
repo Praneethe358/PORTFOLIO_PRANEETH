@@ -34,9 +34,7 @@ const Footer = () => {
 
           <div className="text-center md:text-right text-gray-500 text-sm">
             <p>© {currentYear} Praneeth. All rights reserved.</p>
-            <p className="mt-1">
-              Built with <span className="text-accent">♥</span> using Next.js & Framer Motion
-            </p>
+
           </div>
         </motion.div>
       </div>
