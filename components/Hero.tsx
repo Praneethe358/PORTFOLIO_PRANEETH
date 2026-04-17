@@ -147,7 +147,7 @@ const Hero = ({ animate: ready = false }: { animate?: boolean }) => {
 
       {/* Social Icons Bar — bottom center */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+        className="absolute bottom-8 inset-x-0 z-20 flex justify-center px-4"
         initial={{ opacity: 0, y: 30 }}
         animate={ready ? { opacity: 1, y: 0 } : hidden}
         transition={{ duration: 0.6, delay: 0.85 }}
