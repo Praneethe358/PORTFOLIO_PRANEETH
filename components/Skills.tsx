@@ -183,7 +183,7 @@ const Skills = () => {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 inline-block">
+          <h2 className="text-2xl md:text-3xl font-bold text-accent uppercase tracking-[0.35em] mb-3 inline-block">
             {'Technical Proficiency'.split('').map((char, i) => (
               <motion.span
                 key={i}
@@ -198,7 +198,7 @@ const Skills = () => {
             ))}
           </h2>
           <motion.div
-            className="h-1 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto rounded-full"
+            className="h-1 bg-accent mx-auto rounded-full"
             initial={{ width: 0 }}
             whileInView={{ width: 48 }}
             viewport={{ once: true }}
@@ -229,7 +229,7 @@ const Skills = () => {
                       key={skill}
                       className={`inline-flex w-full items-center gap-2.5 rounded-full px-4 py-2 text-sm font-medium border transition-colors ${category.pillClass}`}
                     >
-                      <Icon className="h-4 w-4" />
+                      <Icon className="h-4 w-4 text-accent" />
                       {skill}
                     </span>
                   );
