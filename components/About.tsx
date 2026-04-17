@@ -119,7 +119,7 @@ const About = () => {
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
                 transition={{ duration: 0.7, ease, delay: 0.75 }}
               >
-                My edge is deployment. I approach every project as if a real user is waiting on the other end .
+                
               </motion.p>,
 
               <motion.div
