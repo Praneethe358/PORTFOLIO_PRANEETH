@@ -2,59 +2,172 @@
 
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
+import type { LucideIcon } from 'lucide-react';
+import {
+  Accessibility,
+  Aperture,
+  Atom,
+  AudioLines,
+  Bot,
+  BookOpen,
+  Box,
+  Brain,
+  Briefcase,
+  Camera,
+  Cloud,
+  Code2,
+  Compass,
+  Cpu,
+  Database,
+  DatabaseZap,
+  Dot,
+  Eye,
+  FileText,
+  Filter,
+  FlaskConical,
+  Flame,
+  Gauge,
+  GitBranch,
+  GitMerge,
+  GraduationCap,
+  Hand,
+  Layers,
+  Layout,
+  Link2,
+  MessageCircle,
+  Mic,
+  Monitor,
+  Network,
+  Presentation,
+  Puzzle,
+  Rocket,
+  Router,
+  Send,
+  Server,
+  Share2,
+  Smile,
+  Sparkles,
+  Speech,
+  Terminal,
+  Users,
+  Wand2,
+  WifiOff,
+  Workflow,
+} from 'lucide-react';
 
 const Skills = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  const iconMap: Record<string, LucideIcon> = {
+    'Computer Vision': Eye,
+    NLP: MessageCircle,
+    LLMs: Brain,
+    'Gesture Recognition': Hand,
+    'AI Automation': Wand2,
+    'Prompt Engineering': Sparkles,
+    LangChain: Link2,
+    Ollama: Bot,
+    OpenCV: Aperture,
+    MediaPipe: Share2,
+    'Hugging Face': Smile,
+    'Scikit-learn': Layers,
+    Python: Code2,
+    JavaScript: Code2,
+    'HTML / CSS': Layout,
+    SQL: Database,
+    Bash: Terminal,
+    FastAPI: Rocket,
+    Flask: FlaskConical,
+    'REST APIs': Server,
+    'Telegram Bot API': Send,
+    Vercel: Cloud,
+    React: Atom,
+    'Git & GitHub': GitBranch,
+    'VS Code': Monitor,
+    Jupyter: BookOpen,
+    Docker: Box,
+    Postman: Compass,
+    Linux: Terminal,
+    RAG: Layers,
+    'Offline-first AI': WifiOff,
+    'Voice Interfaces': Mic,
+    'AI Accessibility': Accessibility,
+    EdTech: GraduationCap,
+    'Production Deployment': Rocket,
+    MongoDB: Database,
+    PostgreSQL: DatabaseZap,
+    Firebase: Flame,
+    'Vector Databases': DatabaseZap,
+    'Data Preprocessing': Filter,
+    'ETL Pipelines': Workflow,
+    'Client Communication': Users,
+    'Problem Solving': Puzzle,
+    'Self-directed Learning': BookOpen,
+    'Project Ownership': Briefcase,
+    'Technical Documentation': FileText,
+    'Model Serving': Cpu,
+    'API Containerization': Box,
+    'CI/CD Pipelines': GitMerge,
+    'Inference Optimization': Gauge,
+    'System Architecture': Network,
+    'Edge Deployment': Router,
+    'Speech Recognition': AudioLines,
+    'Text-to-Speech': Speech,
+    'Webcam / Sensor Input': Camera,
+    'PDF Processing': FileText,
+    'Slide Generation': Presentation,
+    'Bot Interfaces': Bot,
+  };
   
   const proficiencies = [
     {
       category: 'AI & Machine Learning',
-      pillClass: 'bg-indigo-500/20 text-indigo-200 border-indigo-400/30',
+      pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
       skills: ['Computer Vision', 'NLP', 'LLMs', 'Gesture Recognition', 'AI Automation', 'Prompt Engineering'],
     },
     {
       category: 'Frameworks & Libraries',
-      pillClass: 'bg-sky-500/20 text-sky-200 border-sky-400/30',
+      pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
       skills: ['LangChain', 'Ollama', 'OpenCV', 'MediaPipe', 'Hugging Face', 'Scikit-learn'],
     },
     {
       category: 'Languages',
-      pillClass: 'bg-amber-500/20 text-amber-200 border-amber-400/30',
+      pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
       skills: ['Python', 'JavaScript', 'HTML / CSS', 'SQL', 'Bash'],
     },
     {
       category: 'Web & APIs',
-      pillClass: 'bg-emerald-500/20 text-emerald-200 border-emerald-400/30',
+      pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
       skills: ['FastAPI', 'Flask', 'REST APIs', 'Telegram Bot API', 'Vercel', 'React'],
     },
     {
       category: 'Tools & Platforms',
-      pillClass: 'bg-orange-500/20 text-orange-200 border-orange-400/30',
+      pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
       skills: ['Git & GitHub', 'VS Code', 'Jupyter', 'Docker', 'Postman', 'Linux'],
     },
     {
       category: 'Domains & Concepts',
-      pillClass: 'bg-lime-500/20 text-lime-200 border-lime-400/30',
+      pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
       skills: ['RAG', 'Offline-first AI', 'Voice Interfaces', 'AI Accessibility', 'EdTech', 'Production Deployment'],
     },
     {
       category: 'Data & Backend',
-      pillClass: 'bg-rose-500/20 text-rose-200 border-rose-400/30',
+      pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
       skills: ['MongoDB', 'PostgreSQL', 'Firebase', 'Vector Databases', 'Data Preprocessing', 'ETL Pipelines'],
     },
     {
       category: 'Soft Skills',
-      pillClass: 'bg-zinc-500/30 text-zinc-200 border-zinc-400/30',
+      pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
       skills: ['Client Communication', 'Problem Solving', 'Self-directed Learning', 'Project Ownership', 'Technical Documentation'],
     },
     {
       category: 'MLOps & System Design',
-      pillClass: 'bg-red-500/20 text-red-200 border-red-400/30',
+      pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
       skills: ['Model Serving', 'API Containerization', 'CI/CD Pipelines', 'Inference Optimization', 'System Architecture', 'Edge Deployment'],
     },
     {
       category: 'Multimodal & Interfaces',
-      pillClass: 'bg-teal-500/20 text-teal-200 border-teal-400/30',
+      pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
       skills: ['Speech Recognition', 'Text-to-Speech', 'Webcam / Sensor Input', 'PDF Processing', 'Slide Generation', 'Bot Interfaces'],
     },
   ];
@@ -94,29 +207,33 @@ const Skills = () => {
         </motion.div>
 
         {/* Proficiency Grid */}
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 gap-6">
           {proficiencies.map((category, catIndex) => (
             <motion.div
               key={category.category}
-              className="border border-white/10 rounded-xl p-5 bg-white/[0.03]"
+              className="border border-white/10 rounded-2xl p-6 bg-bg-secondary/70 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: catIndex * 0.08 }}
-              whileHover={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}
+              whileHover={{ borderColor: 'rgba(212, 164, 58, 0.25)' }}
             >
-              <p className="text-xs uppercase tracking-[0.22em] text-gray-400 mb-4">
+              <p className="text-xs uppercase tracking-[0.22em] text-accent/80 mb-4">
                 {category.category}
               </p>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className={`px-3 py-1 rounded-full text-xs font-medium border ${category.pillClass}`}
-                  >
-                    {skill}
-                  </span>
-                ))}
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                {category.skills.map((skill) => {
+                  const Icon = iconMap[skill] ?? Dot;
+                  return (
+                    <span
+                      key={skill}
+                      className={`inline-flex w-full items-center gap-2.5 rounded-full px-4 py-2 text-sm font-medium border transition-colors ${category.pillClass}`}
+                    >
+                      <Icon className="h-4 w-4" />
+                      {skill}
+                    </span>
+                  );
+                })}
               </div>
             </motion.div>
           ))}
