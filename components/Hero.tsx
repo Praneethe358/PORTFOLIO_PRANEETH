@@ -80,9 +80,9 @@ const Hero = ({ animate: ready = false }: { animate?: boolean }) => {
       </motion.div>
 
       <div className="max-w-7xl mx-auto w-full px-4 md:px-8 lg:px-12">
-        <div className="grid md:grid-cols-2 gap-8 items-center min-h-[80vh]">
-          {/* Left — Text Content */}
-          <div className="z-10 flex flex-col justify-center">
+        <div className="flex items-center justify-center min-h-[80vh]">
+          {/* Center — Text Content */}
+          <div className="z-10 flex flex-col justify-center items-center text-center max-w-3xl">
             <motion.p
               className="text-accent text-lg md:text-xl font-medium mb-3 tracking-wide"
               initial={{ opacity: 0, y: 30 }}
@@ -111,7 +111,7 @@ const Hero = ({ animate: ready = false }: { animate?: boolean }) => {
 
             {/* Typewriter role text */}
             <motion.div
-              className="mb-8 h-8 flex items-center"
+              className="mb-8 h-8 flex items-center justify-center"
               initial={{ opacity: 0, y: 30 }}
               animate={ready ? { opacity: 1, y: 0 } : hidden}
               transition={{ duration: 0.7, delay: 0.45, ease }}
@@ -142,39 +142,6 @@ const Hero = ({ animate: ready = false }: { animate?: boolean }) => {
               </motion.a>
             </motion.div>
           </div>
-
-          {/* Right — Floating Portrait Image */}
-          <motion.div
-            className="relative flex justify-end items-center"
-            initial={{ opacity: 0, x: 80 }}
-            animate={ready ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
-            transition={{ duration: 0.9, delay: 0.25, ease }}
-          >
-            <motion.div
-              className="relative w-full max-w-lg"
-              animate={ready ? { y: [0, -12, 0] } : {}}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            >
-              {/* Glow ring behind portrait */}
-              <motion.div
-                className="absolute -inset-4 rounded-2xl bg-accent/5 blur-2xl"
-                animate={ready ? { opacity: [0.3, 0.6, 0.3] } : { opacity: 0 }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent z-10 pointer-events-none" />
-              <div className="portrait-clip overflow-hidden">
-                <img
-                  src="/images/praneeth-hero.jpeg"
-                  alt="Praneeth"
-                  className="w-full h-[500px] md:h-[600px] object-cover object-top grayscale brightness-90"
-                />
-              </div>
-            </motion.div>
-          </motion.div>
         </div>
       </div>
 
