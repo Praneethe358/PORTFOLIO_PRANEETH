@@ -2,89 +2,76 @@
 
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
-import {
-  Code,
-  Database,
-  CurlyBraces,
-  FileCode,
-  Palette,
-  Coffee,
-  Brain,
-  MessageCircle,
-  Layers,
-  TrendingUp,
-  Package,
-  Filter,
-  Microscope,
-  BarChart3,
-  PieChart,
-  Github,
-  BookOpen,
-  Code2,
-  Box,
-  Wrench,
-} from 'lucide-react';
 
 const Skills = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   
-  // Category with icon and skills
   const proficiencies = [
     {
+      category: 'AI & Machine Learning',
+      pillClass: 'bg-indigo-500/20 text-indigo-200 border-indigo-400/30',
+      skills: ['Computer Vision', 'NLP', 'LLMs', 'Gesture Recognition', 'AI Automation', 'Prompt Engineering'],
+    },
+    {
+      category: 'Frameworks & Libraries',
+      pillClass: 'bg-sky-500/20 text-sky-200 border-sky-400/30',
+      skills: ['LangChain', 'Ollama', 'OpenCV', 'MediaPipe', 'Hugging Face', 'Scikit-learn'],
+    },
+    {
       category: 'Languages',
-      icon: Code2,
-      skills: [
-        { name: 'Python', icon: Code },
-        { name: 'JavaScript', icon: Code2 },
-        { name: 'Java', icon: Coffee },
-        { name: 'TypeScript', icon: Code2 },
-      ],
+      pillClass: 'bg-amber-500/20 text-amber-200 border-amber-400/30',
+      skills: ['Python', 'JavaScript', 'HTML / CSS', 'SQL', 'Bash'],
     },
     {
-      category: 'AI & Automation',
-      icon: Brain,
-      skills: [
-        { name: 'Machine Learning', icon: Brain },
-        { name: 'NLP', icon: MessageCircle },
-        { name: 'OpenAI API', icon: Layers },
-        { name: 'Prompt Eng.', icon: TrendingUp },
-      ],
+      category: 'Web & APIs',
+      pillClass: 'bg-emerald-500/20 text-emerald-200 border-emerald-400/30',
+      skills: ['FastAPI', 'Flask', 'REST APIs', 'Telegram Bot API', 'Vercel', 'React'],
     },
     {
-      category: 'Data Science',
-      icon: BarChart3,
-      skills: [
-        { name: 'Data Prep', icon: Filter },
-        { name: 'EDA', icon: Microscope },
-        { name: 'Statistics', icon: BarChart3 },
-        { name: 'Visualization', icon: PieChart },
-      ],
+      category: 'Tools & Platforms',
+      pillClass: 'bg-orange-500/20 text-orange-200 border-orange-400/30',
+      skills: ['Git & GitHub', 'VS Code', 'Jupyter', 'Docker', 'Postman', 'Linux'],
     },
     {
-      category: 'Tools',
-      icon: Wrench,
-      skills: [
-        { name: 'Git', icon: Github },
-        { name: 'Jupyter', icon: BookOpen },
-        { name: 'Docker', icon: Box },
-        { name: 'Tableau', icon: BarChart3 },
-      ],
+      category: 'Domains & Concepts',
+      pillClass: 'bg-lime-500/20 text-lime-200 border-lime-400/30',
+      skills: ['RAG', 'Offline-first AI', 'Voice Interfaces', 'AI Accessibility', 'EdTech', 'Production Deployment'],
+    },
+    {
+      category: 'Data & Backend',
+      pillClass: 'bg-rose-500/20 text-rose-200 border-rose-400/30',
+      skills: ['MongoDB', 'PostgreSQL', 'Firebase', 'Vector Databases', 'Data Preprocessing', 'ETL Pipelines'],
+    },
+    {
+      category: 'Soft Skills',
+      pillClass: 'bg-zinc-500/30 text-zinc-200 border-zinc-400/30',
+      skills: ['Client Communication', 'Problem Solving', 'Self-directed Learning', 'Project Ownership', 'Technical Documentation'],
+    },
+    {
+      category: 'MLOps & System Design',
+      pillClass: 'bg-red-500/20 text-red-200 border-red-400/30',
+      skills: ['Model Serving', 'API Containerization', 'CI/CD Pipelines', 'Inference Optimization', 'System Architecture', 'Edge Deployment'],
+    },
+    {
+      category: 'Multimodal & Interfaces',
+      pillClass: 'bg-teal-500/20 text-teal-200 border-teal-400/30',
+      skills: ['Speech Recognition', 'Text-to-Speech', 'Webcam / Sensor Input', 'PDF Processing', 'Slide Generation', 'Bot Interfaces'],
     },
   ];
 
   return (
-    <section id="skills" className="section bg-bg py-8 md:py-10" ref={sectionRef}>
-      <div className="max-w-5xl mx-auto px-4">
+    <section id="skills" className="section bg-bg py-10 md:py-12" ref={sectionRef}>
+      <div className="max-w-6xl mx-auto px-4">
         {/* Section Title */}
         <motion.div
-          className="text-center mb-8"
+          className="text-center mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-white italic mb-2 inline-block">
-            {'Technical Proficiency'.split('').map((char, i) => (
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 inline-block">
+            {'Skills'.split('').map((char, i) => (
               <motion.span
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -108,60 +95,31 @@ const Skills = () => {
 
         {/* Proficiency Grid */}
         <div className="grid md:grid-cols-2 gap-5">
-          {proficiencies.map((category, catIndex) => {
-            const CategoryIcon = category.icon;
-            return (
-              <motion.div
-                key={category.category}
-                className="border border-white/10 rounded-lg p-5 bg-gradient-to-br from-white/[0.05] to-white/[0.02] backdrop-blur-sm"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.6, delay: catIndex * 0.1 }}
-                whileHover={{ borderColor: 'rgba(212, 164, 58, 0.3)', backgroundColor: 'rgba(212, 164, 58, 0.03)' }}
-              >
-                {/* Category Header */}
-                <div className="flex items-center gap-2 mb-5">
-                  <CategoryIcon size={20} className="text-accent" />
-                  <h3 className="text-base font-semibold text-white italic">{category.category}</h3>
-                </div>
-
-                {/* Skills Grid */}
-                <div className="grid grid-cols-2 gap-4">
-                  {category.skills.map((skill, skillIndex) => {
-                    const SkillIcon = skill.icon;
-                    return (
-                      <motion.div
-                        key={skill.name}
-                        className="flex flex-col items-center text-center"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true, margin: '-40px' }}
-                        transition={{
-                          duration: 0.4,
-                          delay: catIndex * 0.1 + skillIndex * 0.05,
-                        }}
-                        whileHover={{ y: -4 }}
-                      >
-                        <motion.div
-                          className="w-12 h-12 rounded-lg flex items-center justify-center mb-2 bg-white/[0.05] border border-white/10"
-                          whileHover={{
-                            backgroundColor: 'rgba(212, 164, 58, 0.15)',
-                            borderColor: 'rgba(212, 164, 58, 0.3)',
-                            boxShadow: '0 0 20px rgba(212, 164, 58, 0.15)',
-                          }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <SkillIcon size={24} className="text-accent" />
-                        </motion.div>
-                        <p className="text-xs font-medium text-gray-300">{skill.name}</p>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </motion.div>
-            );
-          })}
+          {proficiencies.map((category, catIndex) => (
+            <motion.div
+              key={category.category}
+              className="border border-white/10 rounded-xl p-5 bg-white/[0.03]"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.6, delay: catIndex * 0.08 }}
+              whileHover={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}
+            >
+              <p className="text-xs uppercase tracking-[0.22em] text-gray-400 mb-4">
+                {category.category}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className={`px-3 py-1 rounded-full text-xs font-medium border ${category.pillClass}`}
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
