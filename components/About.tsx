@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { Clock3, Code2, Target, MapPin } from 'lucide-react';
 
 const ease = [0.25, 0.46, 0.45, 0.94];
 
@@ -10,10 +11,10 @@ const About = () => {
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
   const quickInfo = [
-    { label: 'Role', value: 'AI & Data Science Student' },
-    { label: 'Core Stack', value: 'Python, SQL, Machine Learning, NLP' },
-    { label: 'Strengths', value: 'Analytical thinking, fast learner, problem solving' },
-    { label: 'Focus', value: 'Data-driven systems & applied AI' },
+    { label: 'Status', value: '2nd year, KITS, Coimbatore', icon: Clock3 },
+    { label: 'Core Stack', value: 'Python, SQL, Machine Learning , MERN', icon: Code2 },
+    { label: 'Focus', value: 'Deployed AI systems', icon: Target },
+    { label: 'Location', value: 'Coimbatore, India', icon: MapPin },
   ];
 
   return (
@@ -52,10 +53,10 @@ const About = () => {
         </motion.div>
 
         {/* Content Grid — Image Left, Text Right */}
-        <div className="grid md:grid-cols-2 gap-4 lg:gap-6 items-start">
+        <div className="grid md:grid-cols-[320px,1fr] lg:grid-cols-[360px,1fr] gap-12 md:gap-12 lg:gap-14 items-start">
           {/* Left — Portrait slides in from left */}
           <motion.div
-            className="flex justify-center md:justify-start"
+            className="flex justify-center md:justify-end"
             initial={{ opacity: 0, x: -120 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -120 }}
             transition={{ duration: 0.9, ease, delay: 0.2 }}
@@ -83,58 +84,97 @@ const About = () => {
               // Intro
               <motion.p
                 key="intro"
-                className="text-gray-300 text-[16px] leading-relaxed mb-3"
+                className="text-white/90 text-[17px] md:text-[18px] leading-relaxed mb-4 font-heading"
                 initial={{ opacity: 0, x: 80 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
                 transition={{ duration: 0.7, ease, delay: 0.3 }}
               >
-                I&apos;m Praneeth, an AI &amp; Data Science student at <span className="text-accent font-medium">Karunya Institute of Technology</span>, focused on designing data-driven and machine learning–based solutions.
+                I build AI systems that make <span className="text-accent font-medium">real-world services</span> accessible to everyone.
               </motion.p>,
 
               <motion.p
                 key="workflow"
-                className="text-gray-400 text-[16px] leading-relaxed mb-3"
+                className="text-gray-300 text-[16px] leading-relaxed mb-4"
                 initial={{ opacity: 0, x: 80 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
                 transition={{ duration: 0.7, ease, delay: 0.45 }}
               >
-                I work with <span className="text-white font-medium">Python, SQL</span>, and end-to-end ML workflows, including data preprocessing, feature engineering, model training, and evaluation. I approach problems with a strong analytical mindset and emphasize clean, efficient, and scalable code.
+                I&apos;m Praneeth, an AI &amp; Data Science student at <span className="text-white font-medium">Karunya Institute of Technology and Science</span>, driven by one goal: building systems that work in the real world, not just in notebooks. My work spans computer vision, NLP, and end-to-end ML pipelines - from raw data to deployed product.
               </motion.p>,
 
               <motion.p
                 key="foundation"
-                className="text-gray-400 text-[16px] leading-relaxed mb-4"
+                className="text-gray-300 text-[16px] leading-relaxed mb-5"
                 initial={{ opacity: 0, x: 80 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
                 transition={{ duration: 0.7, ease, delay: 0.6 }}
               >
-                I&apos;m continuously strengthening my foundation in AI, statistics, and applied machine learning, while building skills that translate directly to real-world systems.
+                I&apos;ve shipped a tutoring platform to a paying client, built a gesture-controlled presentation system using OpenCV and MediaPipe, and developed an AI coding assistant using RAG and LangChain. I also built a fisherman border-detection system as a proof of how AI can protect lives.
               </motion.p>,
 
               <motion.p
                 key="quickinfo-label"
-                className="text-gray-400 text-[16px] mb-2"
+                className="text-white/85 text-[15px] leading-relaxed mb-4 font-heading"
                 initial={{ opacity: 0, x: 80 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
                 transition={{ duration: 0.7, ease, delay: 0.75 }}
               >
-                ⚡ Quick Info
+                My edge is deployment. I approach every project as if a real user is waiting on the other end .
               </motion.p>,
 
-              <div key="quickinfo" className="space-y-1.5 mb-4">
-                {quickInfo.map((item, i) => (
-                  <motion.div
+              <motion.div
+                key="quickinfo"
+                className="space-y-2.5 mb-5"
+                initial={{ opacity: 0, x: -30 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+                transition={{ duration: 0.5, ease, delay: 0.9 }}
+              >
+                {quickInfo.map((item, index) => (
+                  <div
                     key={item.label}
-                    className="flex items-start gap-2"
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-                    transition={{ duration: 0.5, ease, delay: 0.85 + i * 0.1 }}
+                    className={`flex items-start gap-2.5 pb-2.5 ${index < quickInfo.length - 1 ? 'border-b border-white/10' : ''}`}
                   >
-                    <span className="text-accent mt-1 text-xs">▹</span>
-                    <span className="text-gray-300 text-[16px]"><span className="text-white font-medium">{item.label}:</span> {item.value}</span>
-                  </motion.div>
+                    <span className="mt-0.5 text-accent/80">
+                      <item.icon className="h-3.5 w-3.5" />
+                    </span>
+                    <div>
+                      <p className="text-[10px] uppercase tracking-[0.24em] text-gray-400">
+                        {item.label}
+                      </p>
+                      <p className="text-white text-[14px] font-semibold">
+                        {item.value}
+                      </p>
+                    </div>
+                  </div>
                 ))}
-              </div>,
+              </motion.div>,
+
+              <motion.div
+                key="focus-label"
+                className="text-gray-400 text-[12px] uppercase tracking-[0.24em] mb-3 font-heading"
+                initial={{ opacity: 0, x: 80 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
+                transition={{ duration: 0.6, ease, delay: 1.25 }}
+              >
+                Areas of Focus
+              </motion.div>,
+
+              <motion.div
+                key="focus-pills"
+                className="flex flex-wrap gap-2.5 mb-6"
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                transition={{ duration: 0.6, ease, delay: 1.35 }}
+              >
+                {['Computer Vision', 'NLP', 'Machine Learning', 'AI Accessibility','Web Development'].map((item) => (
+                  <span
+                    key={item}
+                    className="px-3 py-1 rounded-full text-xs font-medium bg-bg-secondary/80 text-gray-200 border border-white/5"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </motion.div>,
 
               // Download CV Button
               <motion.div
