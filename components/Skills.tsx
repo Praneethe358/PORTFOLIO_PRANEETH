@@ -207,27 +207,31 @@ const Skills = () => {
         </motion.div>
 
         {/* Proficiency Grid */}
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 gap-7">
           {proficiencies.map((category, catIndex) => (
             <motion.div
               key={category.category}
-              className="border border-white/10 rounded-2xl p-6 bg-bg-secondary/70 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
+              className="relative overflow-hidden border border-white/10 rounded-2xl p-6 bg-bg-secondary/70 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: catIndex * 0.08 }}
-              whileHover={{ borderColor: 'rgba(212, 164, 58, 0.25)' }}
+              whileHover={{ borderColor: 'rgba(212, 164, 58, 0.35)' }}
             >
-              <p className="text-xs uppercase tracking-[0.22em] text-accent/80 mb-4">
-                {category.category}
-              </p>
+              <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-accent/5 blur-3xl" />
+              <div className="relative flex items-center justify-between gap-4 mb-5">
+                <p className="text-xs uppercase tracking-[0.26em] text-accent/80">
+                  {category.category}
+                </p>
+                <span className="h-[2px] w-10 bg-accent/70 rounded-full" />
+              </div>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                 {category.skills.map((skill) => {
                   const Icon = iconMap[skill] ?? Dot;
                   return (
                     <span
                       key={skill}
-                      className={`inline-flex w-full items-center gap-2.5 rounded-full px-4 py-2 text-sm font-medium border transition-colors ${category.pillClass}`}
+                      className={`inline-flex w-full items-center gap-2.5 rounded-full px-4 py-2 text-sm font-medium border transition-all duration-300 ${category.pillClass}`}
                     >
                       <Icon className="h-4 w-4 text-accent" />
                       {skill}
