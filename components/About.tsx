@@ -11,10 +11,10 @@ const About = () => {
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
   const quickInfo = [
-    { label: 'Status', value: '2nd year, KITS, Coimbatore', icon: Clock3 },
+    { label: 'Status', value: 'B.TECH 2nd year at Karunya Institute of Technology and Sciences', icon: Clock3 },
     { label: 'Core Stack', value: 'Python, SQL, Machine Learning , MERN', icon: Code2 },
     { label: 'Focus', value: 'Deployed AI systems', icon: Target },
-    { label: 'Location', value: 'Coimbatore, India', icon: MapPin },
+    
   ];
 
   return (
@@ -99,7 +99,7 @@ const About = () => {
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
                 transition={{ duration: 0.7, ease, delay: 0.45 }}
               >
-                I&apos;m Praneeth, an AI &amp; Data Science student at <span className="text-white font-medium">Karunya Institute of Technology and Science</span>, driven by one goal: building systems that work in the real world, not just in notebooks. My work spans computer vision, NLP, and end-to-end ML pipelines - from raw data to deployed product.
+                I&apos;m Praneeth, an AI &amp; Data Science student at <span className="text-white font-medium">Karunya Institute of Technology and Science</span>, driven by one goal: building systems that work in the real world. My work spans computer vision, NLP, and end-to-end ML pipelines - from raw data to deployed product.
               </motion.p>,
 
               <motion.p

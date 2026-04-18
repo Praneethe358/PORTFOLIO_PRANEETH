@@ -133,12 +133,12 @@ const Skills = () => {
     {
       category: 'Languages',
       pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
-      skills: ['Python', 'JavaScript', 'HTML / CSS', 'SQL', 'Bash'],
+      skills: ['Python','java','C++', 'JavaScript', 'HTML / CSS', 'SQL', 'Bash'],
     },
     {
       category: 'Web & APIs',
       pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
-      skills: ['FastAPI', 'Flask', 'REST APIs', 'Telegram Bot API', 'Vercel', 'React'],
+      skills: ['FastAPI', 'Flask', 'REST APIs', 'Telegram Bot API', 'Vercel', 'React','Next'],
     },
     {
       category: 'Tools & Platforms',
@@ -156,19 +156,9 @@ const Skills = () => {
       skills: ['MongoDB', 'PostgreSQL', 'Firebase', 'Vector Databases', 'Data Preprocessing', 'ETL Pipelines'],
     },
     {
-      category: 'Soft Skills',
-      pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
-      skills: ['Client Communication', 'Problem Solving', 'Self-directed Learning', 'Project Ownership', 'Technical Documentation'],
-    },
-    {
       category: 'MLOps & System Design',
       pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
       skills: ['Model Serving', 'API Containerization', 'CI/CD Pipelines', 'Inference Optimization', 'System Architecture', 'Edge Deployment'],
-    },
-    {
-      category: 'Multimodal & Interfaces',
-      pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
-      skills: ['Speech Recognition', 'Text-to-Speech', 'Webcam / Sensor Input', 'PDF Processing', 'Slide Generation', 'Bot Interfaces'],
     },
   ];
 
