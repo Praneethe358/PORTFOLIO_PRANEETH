@@ -123,14 +123,14 @@ const Skills = () => {
   };
 
   const categoryColorMap: Record<string, string> = {
-    'AI & Machine Learning': 'text-emerald-300',
-    'Frameworks & Libraries': 'text-cyan-300',
-    Languages: 'text-amber-300',
-    'Web & APIs': 'text-rose-300',
-    'Tools & Platforms': 'text-indigo-300',
-    'Domains & Concepts': 'text-lime-300',
-    'Data & Backend': 'text-sky-300',
-    'MLOps & System Design': 'text-orange-300',
+    'AI & Machine Learning': 'text-emerald-200 drop-shadow-[0_0_10px_rgba(16,185,129,0.55)]',
+    'Frameworks & Libraries': 'text-cyan-200 drop-shadow-[0_0_10px_rgba(34,211,238,0.55)]',
+    Languages: 'text-amber-200 drop-shadow-[0_0_10px_rgba(251,191,36,0.55)]',
+    'Web & APIs': 'text-rose-200 drop-shadow-[0_0_10px_rgba(251,113,133,0.55)]',
+    'Tools & Platforms': 'text-indigo-200 drop-shadow-[0_0_10px_rgba(129,140,248,0.55)]',
+    'Domains & Concepts': 'text-lime-200 drop-shadow-[0_0_10px_rgba(163,230,53,0.55)]',
+    'Data & Backend': 'text-sky-200 drop-shadow-[0_0_10px_rgba(56,189,248,0.55)]',
+    'MLOps & System Design': 'text-orange-200 drop-shadow-[0_0_10px_rgba(251,146,60,0.55)]',
   };
 
   const iconMap: Record<string, LucideIcon> = {
