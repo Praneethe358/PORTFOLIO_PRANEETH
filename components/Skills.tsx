@@ -286,17 +286,26 @@ const Skills = () => {
           {proficiencies.map((category, catIndex) => (
             <motion.div
               key={category.category}
-              className="relative overflow-hidden border border-white/10 rounded-2xl p-6 bg-bg-secondary/70 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
+              className="relative overflow-hidden border border-white/10 rounded-2xl px-6 pt-6 pb-4 md:px-8 md:pt-7 md:pb-5 min-h-[230px] bg-bg-secondary/70 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: catIndex * 0.08 }}
-              whileHover={{ borderColor: 'rgba(212, 164, 58, 0.35)' }}
+              whileHover={{ borderColor: 'rgba(212, 164, 58, 0.45)', y: -4 }}
             >
               <motion.div
                 className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-accent/5 blur-3xl"
                 animate={{ opacity: [0.2, 0.45, 0.2] }}
                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <motion.div
+                className="absolute inset-0 opacity-0"
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.4 }}
+                style={{
+                  background:
+                    'radial-gradient(600px circle at 15% 20%, rgba(56,189,248,0.08), transparent 45%)',
+                }}
               />
               <div className="relative flex items-center justify-between gap-4 mb-5">
                 <p
@@ -308,19 +317,19 @@ const Skills = () => {
                 </p>
                 <span className="h-[2px] w-10 bg-accent/70 rounded-full" />
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-start">
                 {category.skills.map((skill) => {
                   const Icon = iconMap[skill] ?? Dot;
                   const iconTone = iconColorMap[skill] ?? 'text-accent';
                   return (
                     <motion.span
                       key={skill}
-                      className={`inline-flex w-full items-center gap-2.5 rounded-full px-4 py-2 text-sm font-medium border transition-all duration-300 ${category.pillClass}`}
+                      className={`inline-flex w-full items-center gap-3 rounded-full px-5 py-2.5 text-[15px] font-semibold border transition-all duration-300 ${category.pillClass}`}
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: '-80px' }}
                       transition={{ duration: 0.35 }}
-                      whileHover={{ y: -3, scale: 1.02, borderColor: 'rgba(212, 164, 58, 0.5)' }}
+                      whileHover={{ y: -3, scale: 1.02, borderColor: 'rgba(212, 164, 58, 0.55)' }}
                       whileTap={{ scale: 0.98 }}
                     >
                       <Icon className={`h-4 w-4 ${iconTone}`} />
