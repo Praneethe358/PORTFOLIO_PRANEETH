@@ -266,7 +266,7 @@ const Skills = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: i * 0.05 }}
                 viewport={{ once: true, margin: '-50px' }}
-                className="inline-block"
+                className="inline-block text-amber-200 drop-shadow-[0_0_12px_rgba(212,164,58,0.6)]"
               >
                 {char === ' ' ? '\u00A0' : char}
               </motion.span>

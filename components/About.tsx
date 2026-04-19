@@ -10,12 +10,27 @@ const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
+  const quickInfoColors: Record<string, string> = {
+    Status: 'text-sky-300',
+    'Core Stack': 'text-amber-300',
+    Focus: 'text-emerald-300',
+  };
+  const focusPillColors = [
+    'bg-amber-500/10 text-amber-200 border-amber-400/30',
+    'bg-cyan-500/10 text-cyan-200 border-cyan-400/30',
+    'bg-emerald-500/10 text-emerald-200 border-emerald-400/30',
+    'bg-rose-500/10 text-rose-200 border-rose-400/30',
+    'bg-indigo-500/10 text-indigo-200 border-indigo-400/30',
+  ];
+
   const quickInfo = [
     { label: 'Status', value: 'B.TECH 2nd year at Karunya Institute of Technology and Sciences', icon: Clock3 },
     { label: 'Core Stack', value: 'Python, SQL, Machine Learning , MERN', icon: Code2 },
     { label: 'Focus', value: 'Deployed AI systems', icon: Target },
     
   ];
+
+  const focusItems = ['Computer Vision', 'NLP', 'Machine Learning', 'AI Accessibility', 'Web Development'];
 
   return (
     <section
@@ -131,27 +146,30 @@ const About = () => {
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
                 transition={{ duration: 0.5, ease, delay: 0.9 }}
               >
-                {quickInfo.map((item, index) => (
-                  <motion.div
-                    key={item.label}
-                    className={`flex items-start gap-2.5 pb-2.5 ${index < quickInfo.length - 1 ? 'border-b border-white/10' : ''}`}
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
-                    transition={{ duration: 0.4, delay: 1 + index * 0.12 }}
-                  >
-                    <span className="mt-0.5 text-accent/80">
-                      <item.icon className="h-3.5 w-3.5" />
-                    </span>
-                    <div>
-                      <p className="text-[10px] uppercase tracking-[0.24em] text-gray-400">
-                        {item.label}
-                      </p>
-                      <p className="text-white text-[14px] font-semibold">
-                        {item.value}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+                {quickInfo.map((item, index) => {
+                  const tone = quickInfoColors[item.label] ?? 'text-accent/80';
+                  return (
+                    <motion.div
+                      key={item.label}
+                      className={`flex items-start gap-2.5 pb-2.5 ${index < quickInfo.length - 1 ? 'border-b border-white/10' : ''}`}
+                      initial={{ opacity: 0, y: 14 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+                      transition={{ duration: 0.4, delay: 1 + index * 0.12 }}
+                    >
+                      <span className={`mt-0.5 ${tone}`}>
+                        <item.icon className="h-3.5 w-3.5" />
+                      </span>
+                      <div>
+                        <p className={`text-[10px] uppercase tracking-[0.24em] ${tone}`}>
+                          {item.label}
+                        </p>
+                        <p className="text-white text-[14px] font-semibold">
+                          {item.value}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </motion.div>,
 
               <motion.div
@@ -171,10 +189,10 @@ const About = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                 transition={{ duration: 0.6, ease, delay: 1.35 }}
               >
-                {['Computer Vision', 'NLP', 'Machine Learning', 'AI Accessibility','Web Development'].map((item) => (
+                {focusItems.map((item, idx) => (
                   <motion.span
                     key={item}
-                    className="px-3 py-1 rounded-full text-xs font-medium bg-bg-secondary/80 text-gray-200 border border-white/5"
+                    className={`px-3 py-1 rounded-full text-xs font-medium border ${focusPillColors[idx % focusPillColors.length]}`}
                     whileHover={{ y: -2, scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                   >
