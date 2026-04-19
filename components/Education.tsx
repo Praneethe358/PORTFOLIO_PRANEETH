@@ -64,7 +64,7 @@ const Education = () => {
                 transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
                 whileHover={{
                   y: -6,
-                  boxShadow: '0 12px 40px rgba(212, 164, 58, 0.1)',
+                  boxShadow: '0 12px 40px rgba(56, 189, 248, 0.12)',
                 }}
               >
                 <div className="flex items-start gap-4 mb-5">
@@ -104,7 +104,7 @@ const Education = () => {
             transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
             whileHover={{
               y: -6,
-              boxShadow: '0 12px 40px rgba(212, 164, 58, 0.1)',
+              boxShadow: '0 12px 40px rgba(56, 189, 248, 0.12)',
             }}
           >
             <div className="flex items-start gap-4 mb-6">
@@ -129,8 +129,8 @@ const Education = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: 0.05 * idx }}
                   whileHover={{
-                    borderColor: 'rgba(212,164,58,0.4)',
-                    color: '#d4a43a',
+                    borderColor: 'rgba(56,189,248,0.45)',
+                    color: '#38bdf8',
                   }}
                 >
                   {course}

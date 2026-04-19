@@ -19,33 +19,26 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* Hide scrollbar (keep scrolling) */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-::-webkit-scrollbar-track {
-  background: #0b0f1a;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #d4a43a;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #f0c95c;
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 /* Accent text */
 .accent-text {
-  color: #d4a43a;
+  color: #38bdf8;
 }
 
 /* Section title accent line */
 .section-title {
   font-family: 'Poppins', 'Inter', system-ui, sans-serif;
-  color: #d4a43a;
+  color: #38bdf8;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-weight: 700;
@@ -60,33 +53,33 @@ body {
 }
 
 .card:hover {
-  border-color: rgba(212, 164, 58, 0.3);
-  box-shadow: 0 8px 30px rgba(212, 164, 58, 0.08);
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 8px 30px rgba(56, 189, 248, 0.08);
 }
 
 /* Button Styles */
 .btn-accent {
   @apply px-7 py-3 rounded-full font-semibold text-sm tracking-wide transition-all duration-300;
-  background: linear-gradient(135deg, #d4a43a 0%, #b8882e 100%);
+  background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
   color: #0b0f1a;
   border: none;
 }
 
 .btn-accent:hover {
-  background: linear-gradient(135deg, #f0c95c 0%, #d4a43a 100%);
-  box-shadow: 0 4px 20px rgba(212, 164, 58, 0.4);
+  background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
+  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4);
 }
 
 .btn-outline {
   @apply px-7 py-3 rounded-full font-semibold text-sm tracking-wide transition-all duration-300;
   background: transparent;
-  color: #d4a43a;
-  border: 1.5px solid #d4a43a;
+  color: #38bdf8;
+  border: 1.5px solid #38bdf8;
 }
 
 .btn-outline:hover {
-  background: rgba(212, 164, 58, 0.1);
-  box-shadow: 0 4px 20px rgba(212, 164, 58, 0.15);
+  background: rgba(56, 189, 248, 0.1);
+  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.15);
 }
 
 /* Section Padding */
@@ -113,6 +106,6 @@ html {
 
 /* Selection color */
 ::selection {
-  background: rgba(212, 164, 58, 0.25);
+  background: rgba(56, 189, 248, 0.25);
   color: #fff;
 }

@@ -1,10 +1,10 @@
 // Design tokens and constants for the portfolio
 
 export const COLORS = {
-  // Primary Accent — Yellow/Gold
-  accent: '#d4a43a',
-  accentDark: '#b8882e',
-  accentLight: '#f0c95c',
+  // Primary Accent — Blue Gradient
+  accent: '#38bdf8',
+  accentDark: '#2563eb',
+  accentLight: '#60a5fa',
 
   // Neutrals
   white: '#ffffff',
@@ -69,8 +69,8 @@ export const SHADOWS = {
   md: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
   lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
   xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
-  glow: '0 0 20px rgba(212, 164, 58, 0.3)',
-  glowLarge: '0 0 40px rgba(212, 164, 58, 0.5)',
+  glow: '0 0 20px rgba(56, 189, 248, 0.3)',
+  glowLarge: '0 0 40px rgba(56, 189, 248, 0.5)',
 };
 
 export const TYPOGRAPHY = {

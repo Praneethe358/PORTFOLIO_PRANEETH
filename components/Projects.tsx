@@ -84,7 +84,7 @@ const ProjectCard = ({
             <motion.span
               key={idx}
               className="text-xs px-3 py-1 rounded-full border border-white/10 text-gray-400"
-              whileHover={{ borderColor: 'rgba(212,164,58,0.5)', color: '#d4a43a' }}
+              whileHover={{ borderColor: 'rgba(56,189,248,0.6)', color: '#38bdf8' }}
             >
               {tech}
             </motion.span>
@@ -144,7 +144,7 @@ const Projects = () => {
         'Nginx',
         'PWA',
       ],
-      badgeTone: 'text-amber-200 bg-amber-500/10',
+      badgeTone: 'text-sky-200 bg-sky-500/10',
       meta: 'Built',
       metaDot: 'bg-gray-500',
       github: 'https://github.com/Praneethe358',
@@ -210,7 +210,7 @@ const Projects = () => {
       tech: ['React', 'Vite', 'JavaScript', 'Node.js', 'CSS', 'Render'],
       badgeTone: 'text-rose-200 bg-rose-500/10',
       meta: 'Built',
-      metaDot: 'bg-amber-300',
+      metaDot: 'bg-sky-300',
       github: 'https://github.com/Praneethe358',
     },
     {

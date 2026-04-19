@@ -62,7 +62,7 @@ const Skills = () => {
     'Computer Vision': 'text-emerald-400',
     NLP: 'text-sky-400',
     LLMs: 'text-purple-400',
-    'Gesture Recognition': 'text-amber-400',
+    'Gesture Recognition': 'text-sky-400',
     'AI Automation': 'text-rose-400',
     'Prompt Engineering': 'text-fuchsia-400',
     LangChain: 'text-cyan-400',
@@ -71,10 +71,10 @@ const Skills = () => {
     MediaPipe: 'text-teal-400',
     'Hugging Face': 'text-pink-400',
     'Scikit-learn': 'text-blue-400',
-    Python: 'text-yellow-400',
-    java: 'text-orange-400',
+    Python: 'text-sky-300',
+    java: 'text-blue-400',
     'C++': 'text-blue-300',
-    JavaScript: 'text-amber-300',
+    JavaScript: 'text-sky-300',
     'HTML / CSS': 'text-rose-300',
     SQL: 'text-emerald-300',
     Bash: 'text-gray-300',
@@ -85,52 +85,52 @@ const Skills = () => {
     Vercel: 'text-white',
     React: 'text-cyan-400',
     Next: 'text-gray-200',
-    'Git & GitHub': 'text-orange-400',
+    'Git & GitHub': 'text-blue-400',
     'VS Code': 'text-blue-400',
-    Jupyter: 'text-amber-400',
+    Jupyter: 'text-sky-400',
     Docker: 'text-sky-400',
-    Postman: 'text-orange-300',
+    Postman: 'text-blue-300',
     Linux: 'text-lime-300',
     RAG: 'text-fuchsia-300',
     'Offline-first AI': 'text-emerald-300',
     'Voice Interfaces': 'text-purple-300',
     'AI Accessibility': 'text-rose-300',
     EdTech: 'text-indigo-300',
-    'Production Deployment': 'text-amber-300',
+    'Production Deployment': 'text-sky-300',
     MongoDB: 'text-emerald-400',
     PostgreSQL: 'text-sky-400',
-    Firebase: 'text-yellow-400',
+    Firebase: 'text-sky-300',
     'Vector Databases': 'text-teal-400',
     'Data Preprocessing': 'text-lime-400',
     'ETL Pipelines': 'text-cyan-400',
     'Model Serving': 'text-purple-400',
     'API Containerization': 'text-blue-400',
     'CI/CD Pipelines': 'text-rose-400',
-    'Inference Optimization': 'text-amber-400',
+    'Inference Optimization': 'text-sky-400',
     'System Architecture': 'text-emerald-400',
-    'Edge Deployment': 'text-orange-400',
+    'Edge Deployment': 'text-blue-400',
     'Speech Recognition': 'text-fuchsia-400',
     'Text-to-Speech': 'text-sky-400',
     'Webcam / Sensor Input': 'text-teal-400',
     'PDF Processing': 'text-red-300',
-    'Slide Generation': 'text-amber-300',
+    'Slide Generation': 'text-sky-300',
     'Bot Interfaces': 'text-cyan-400',
     'Client Communication': 'text-rose-300',
     'Problem Solving': 'text-lime-300',
     'Self-directed Learning': 'text-indigo-300',
-    'Project Ownership': 'text-orange-300',
+    'Project Ownership': 'text-blue-300',
     'Technical Documentation': 'text-sky-300',
   };
 
   const categoryColorMap: Record<string, string> = {
     'AI & Machine Learning': 'text-emerald-200 drop-shadow-[0_0_10px_rgba(16,185,129,0.55)]',
     'Frameworks & Libraries': 'text-cyan-200 drop-shadow-[0_0_10px_rgba(34,211,238,0.55)]',
-    Languages: 'text-amber-200 drop-shadow-[0_0_10px_rgba(251,191,36,0.55)]',
+    Languages: 'text-sky-200 drop-shadow-[0_0_10px_rgba(56,189,248,0.55)]',
     'Web & APIs': 'text-rose-200 drop-shadow-[0_0_10px_rgba(251,113,133,0.55)]',
     'Tools & Platforms': 'text-indigo-200 drop-shadow-[0_0_10px_rgba(129,140,248,0.55)]',
     'Domains & Concepts': 'text-lime-200 drop-shadow-[0_0_10px_rgba(163,230,53,0.55)]',
     'Data & Backend': 'text-sky-200 drop-shadow-[0_0_10px_rgba(56,189,248,0.55)]',
-    'MLOps & System Design': 'text-orange-200 drop-shadow-[0_0_10px_rgba(251,146,60,0.55)]',
+    'MLOps & System Design': 'text-indigo-200 drop-shadow-[0_0_10px_rgba(99,102,241,0.55)]',
   };
 
   const iconMap: Record<string, LucideIcon> = {
@@ -258,7 +258,7 @@ const Skills = () => {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-accent uppercase tracking-[0.35em] mb-3 inline-block">
+          <h2 className="section-title text-2xl md:text-3xl font-bold mb-3 inline-block">
             {'Technical Proficiency'.split('').map((char, i) => (
               <motion.span
                 key={i}
@@ -266,14 +266,14 @@ const Skills = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: i * 0.05 }}
                 viewport={{ once: true, margin: '-50px' }}
-                className="inline-block text-amber-200 drop-shadow-[0_0_12px_rgba(212,164,58,0.6)]"
+                className="inline-block"
               >
                 {char === ' ' ? '\u00A0' : char}
               </motion.span>
             ))}
           </h2>
           <motion.div
-            className="h-1 bg-accent mx-auto rounded-full"
+            className="h-1 bg-sky-400 mx-auto rounded-full"
             initial={{ width: 0 }}
             whileInView={{ width: 48 }}
             viewport={{ once: true }}
@@ -291,9 +291,9 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: catIndex * 0.08 }}
-              whileHover={{ borderColor: 'rgba(212, 164, 58, 0.45)', y: -4 }}
+              whileHover={{ borderColor: 'rgba(56, 189, 248, 0.45)', y: -4 }}
             >
-              <div className="pointer-events-none absolute inset-0 rounded-2xl border border-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ borderImage: 'linear-gradient(120deg, rgba(56,189,248,0.9), rgba(212,164,58,0.9), rgba(236,72,153,0.9)) 1' }} />
+              <div className="pointer-events-none absolute inset-0 rounded-2xl border border-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ borderImage: 'linear-gradient(120deg, rgba(56,189,248,0.9), rgba(59,130,246,0.9), rgba(99,102,241,0.9)) 1' }} />
               <motion.div
                 className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-accent/5 blur-3xl"
                 animate={{ opacity: [0.2, 0.45, 0.2] }}
@@ -339,7 +339,7 @@ const Skills = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: '-80px' }}
                       transition={{ duration: 0.35 }}
-                      whileHover={{ y: -3, scale: 1.02, borderColor: 'rgba(212, 164, 58, 0.55)' }}
+                      whileHover={{ y: -3, scale: 1.02, borderColor: 'rgba(56, 189, 248, 0.55)' }}
                       whileTap={{ scale: 0.98 }}
                     >
                       <Icon className={`h-4 w-4 ${iconTone}`} />

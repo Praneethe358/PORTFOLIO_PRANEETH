@@ -34,7 +34,7 @@ const CursorGlow = () => {
         y: springY,
         translateX: '-50%',
         translateY: '-50%',
-        background: 'radial-gradient(circle, rgba(212,164,58,0.04) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(56,189,248,0.05) 0%, transparent 70%)',
       }}
     />
   );
@@ -92,7 +92,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
             cy="40"
             r="36"
             fill="none"
-            stroke="#d4a43a"
+            stroke="#38bdf8"
             strokeWidth="2"
             strokeDasharray="226"
             strokeDashoffset={226 - (226 * progress) / 100}
@@ -103,7 +103,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
             x="40"
             y="44"
             textAnchor="middle"
-            fill="#d4a43a"
+            fill="#38bdf8"
             fontWeight="700"
             fontSize="28"
             fontFamily="Poppins, Inter, sans-serif"

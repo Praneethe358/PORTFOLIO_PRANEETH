@@ -12,11 +12,11 @@ const About = () => {
 
   const quickInfoColors: Record<string, string> = {
     Status: 'text-sky-300',
-    'Core Stack': 'text-amber-300',
+    'Core Stack': 'text-sky-300',
     Focus: 'text-emerald-300',
   };
   const focusPillColors = [
-    'bg-amber-500/10 text-amber-200 border-amber-400/30',
+    'bg-sky-500/10 text-sky-200 border-sky-400/30',
     'bg-cyan-500/10 text-cyan-200 border-cyan-400/30',
     'bg-emerald-500/10 text-emerald-200 border-emerald-400/30',
     'bg-rose-500/10 text-rose-200 border-rose-400/30',
@@ -60,7 +60,7 @@ const About = () => {
             ))}
           </h2>
           <motion.div
-            className="h-1 bg-accent mx-auto rounded-full"
+            className="h-1 bg-sky-400 mx-auto rounded-full"
             initial={{ width: 0 }}
             animate={isInView ? { width: 48 } : { width: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -114,7 +114,7 @@ const About = () => {
                   transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
                 />
                 <motion.div
-                  className="absolute top-1/2 left-0 h-10 w-10 rounded-full bg-amber-400/20 blur-lg"
+                  className="absolute top-1/2 left-0 h-10 w-10 rounded-full bg-sky-400/20 blur-lg"
                   animate={{ x: [0, 24, 0], opacity: [0.2, 0.5, 0.2] }}
                   transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
                 />

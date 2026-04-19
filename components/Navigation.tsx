@@ -53,6 +53,15 @@ const Navigation = () => {
     <motion.nav
       className="fixed top-0 left-0 right-0 z-50 bg-bg/90 backdrop-blur-xl shadow-lg shadow-black/20 border-b border-white/[0.04]"
     >
+      <motion.div
+        className="absolute -left-2/3 top-0 h-full w-2/3 opacity-0 pointer-events-none"
+        animate={{ x: ['-60%', '200%'], opacity: [0, 0.75, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+        style={{
+          background:
+            'linear-gradient(110deg, transparent, rgba(56,189,248,0.18), transparent)',
+        }}
+      />
       {/* Scroll Progress Bar */}
       <motion.div
         className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent origin-left"
@@ -68,8 +77,8 @@ const Navigation = () => {
           className="flex items-center gap-2"
           whileHover={{ scale: 1.03 }}
         >
-          <div className="w-10 h-10 rounded-full border-2 border-accent flex items-center justify-center">
-            <span className="text-accent text-sm font-bold">P</span>
+          <div className="w-10 h-10 rounded-full border-2 border-sky-400 flex items-center justify-center">
+            <span className="text-sky-400 text-sm font-bold">P</span>
           </div>
           <span className="text-white text-xl font-bold font-heading tracking-wide">
             Praneeth
@@ -85,7 +94,7 @@ const Navigation = () => {
               onClick={() => setActiveSection(item.id)}
               className={`relative px-5 py-2.5 text-sm font-semibold tracking-widest transition-colors ${
                 activeSection === item.id
-                  ? 'text-accent'
+                  ? 'text-sky-400'
                   : 'text-gray-400 hover:text-white'
               }`}
               whileHover={{ scale: 1.05 }}
@@ -93,7 +102,7 @@ const Navigation = () => {
               {item.label}
               {activeSection === item.id && (
                 <motion.div
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-accent"
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-sky-400"
                   layoutId="activeNav"
                 />
               )}

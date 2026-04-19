@@ -84,7 +84,7 @@ const Hero = ({ animate: ready = false }: { animate?: boolean }) => {
           {/* Center — Text Content */}
           <div className="z-10 flex flex-col justify-center items-center text-center max-w-3xl">
             <motion.p
-              className="text-accent text-lg md:text-xl font-medium mb-3 tracking-wide"
+              className="text-sky-400 text-lg md:text-xl font-medium mb-3 tracking-wide"
               initial={{ opacity: 0, y: 30 }}
               animate={ready ? { opacity: 1, y: 0 } : hidden}
               transition={{ duration: 0.7, delay: 0.15, ease }}
@@ -103,7 +103,7 @@ const Hero = ({ animate: ready = false }: { animate?: boolean }) => {
 
             {/* Animated accent line under name */}
             <motion.div
-              className="h-1 bg-accent rounded-full mb-5"
+              className="h-1 bg-sky-400 rounded-full mb-5"
               initial={{ width: 0, opacity: 0 }}
               animate={ready ? { width: 80, opacity: 1 } : { width: 0, opacity: 0 }}
               transition={{ duration: 0.8, delay: 0.6, ease }}
@@ -134,7 +134,7 @@ const Hero = ({ animate: ready = false }: { animate?: boolean }) => {
               <motion.a
                 href="#contact"
                 className="btn-accent inline-block relative"
-                whileHover={{ scale: 1.08, filter: 'brightness(1.25)', boxShadow: '0 0 30px rgba(212, 164, 58, 0.6)' }}
+                whileHover={{ scale: 1.08, filter: 'brightness(1.25)', boxShadow: '0 0 30px rgba(56, 189, 248, 0.6)' }}
                 whileTap={{ scale: 0.94 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
