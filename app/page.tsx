@@ -148,7 +148,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
       {/* Progress bar */}
       <div className="w-48 h-[2px] bg-white/5 rounded-full overflow-hidden">
         <motion.div
-          className="h-full bg-accent rounded-full"
+          className="h-full bg-sky-400 rounded-full"
           initial={{ width: '0%' }}
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.1, ease: 'linear' }}

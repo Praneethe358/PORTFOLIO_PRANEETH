@@ -64,12 +64,12 @@ const Navigation = () => {
       />
       {/* Scroll Progress Bar */}
       <motion.div
-        className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent origin-left"
+        className="absolute bottom-0 left-0 right-0 h-[2px] bg-sky-400 origin-left"
         style={{ scaleX }}
       />
 
       {/* Subtle bottom glow */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-sky-400/20 to-transparent" />
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-5 flex items-center justify-between">
         {/* Logo */}
         <motion.a
