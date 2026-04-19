@@ -92,6 +92,33 @@ const About = () => {
                 alt="Praneeth"
                 className="relative w-[260px] md:w-[320px] h-[330px] md:h-[400px] object-cover object-top rounded-2xl border border-white/5"
               />
+              <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
+                <motion.div
+                  className="absolute top-3 left-3 h-[3px] w-24 bg-gradient-to-r from-transparent via-sky-200 to-transparent shadow-[0_0_12px_rgba(56,189,248,0.8)]"
+                  animate={{ x: [0, 110, 0], opacity: [0.35, 1, 0.35] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                />
+                <motion.div
+                  className="absolute bottom-3 right-3 h-[3px] w-24 bg-gradient-to-r from-transparent via-emerald-200 to-transparent shadow-[0_0_12px_rgba(52,211,153,0.8)]"
+                  animate={{ x: [0, -110, 0], opacity: [0.35, 1, 0.35] }}
+                  transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
+                />
+                <motion.div
+                  className="absolute -top-6 -left-6 h-20 w-20 rounded-full bg-cyan-400/15 blur-xl"
+                  animate={{ x: [0, 18, 0], y: [0, 12, 0], opacity: [0.3, 0.6, 0.3] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                />
+                <motion.div
+                  className="absolute bottom-6 right-5 h-16 w-16 rounded-full bg-emerald-400/15 blur-xl"
+                  animate={{ x: [0, -16, 0], y: [0, -10, 0], opacity: [0.25, 0.5, 0.25] }}
+                  transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+                />
+                <motion.div
+                  className="absolute top-1/2 left-0 h-10 w-10 rounded-full bg-amber-400/20 blur-lg"
+                  animate={{ x: [0, 24, 0], opacity: [0.2, 0.5, 0.2] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                />
+              </div>
             </motion.div>
           </motion.div>
 
