@@ -314,7 +314,7 @@ const Skills = () => {
                 transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}
                 style={{
                   background:
-                    'linear-gradient(110deg, transparent, rgba(212,164,58,0.12), transparent)',
+                    'linear-gradient(110deg, transparent, rgba(56,189,248,0.18), transparent)',
                 }}
               />
               <div className="relative flex items-center justify-between gap-4 mb-5">
