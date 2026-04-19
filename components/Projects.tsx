@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { CardTilt } from './Effects';
 
 const ProjectCard = ({
   project,
@@ -25,22 +26,42 @@ const ProjectCard = ({
   index: number;
 }) => {
   return (
-    <motion.div
-      className="card p-7 md:p-8 h-full flex flex-col justify-between"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{
-        duration: 0.6,
-        delay: 0.1 * index,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      }}
-      whileHover={{
-        y: -6,
-        boxShadow: '0 18px 60px rgba(0, 0, 0, 0.35)',
-      }}
-    >
-      <div>
+    <CardTilt depth={10}>
+      <motion.div
+        className="card p-7 md:p-8 h-full flex flex-col justify-between relative overflow-hidden"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{
+          duration: 0.6,
+          delay: 0.1 * index,
+          ease: [0.25, 0.46, 0.45, 0.94],
+        }}
+        whileHover={{
+          y: -6,
+          boxShadow: '0 18px 60px rgba(0, 0, 0, 0.35)',
+        }}
+      >
+        <motion.div
+          className="absolute -top-24 -right-24 h-40 w-40 rounded-full bg-accent/10 blur-3xl"
+          animate={{ opacity: [0.25, 0.6, 0.25] }}
+          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute -bottom-24 -left-20 h-36 w-36 rounded-full bg-white/5 blur-3xl"
+          animate={{ opacity: [0.15, 0.35, 0.15] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute inset-0 opacity-0"
+          whileHover={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+          style={{
+            background:
+              'radial-gradient(600px circle at 20% 20%, rgba(212,164,58,0.12), transparent 45%)',
+          }}
+        />
+        <div className="relative z-[1]">
         <div className="flex items-center justify-between gap-3 mb-5">
           <div className="flex items-center gap-2">
             {project.lead && (
@@ -92,7 +113,7 @@ const ProjectCard = ({
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-3 pt-6 border-t border-white/5">
+      <div className="flex flex-wrap gap-3 pt-6 border-t border-white/5 relative z-[1]">
         <motion.a
           href={project.github}
           target="_blank"
@@ -117,6 +138,7 @@ const ProjectCard = ({
         )}
       </div>
     </motion.div>
+    </CardTilt>
   );
 };
 
@@ -175,7 +197,7 @@ const Projects = () => {
         'Maritime safety dashboard prototype that visualises coastal border risk zones and telemetry.',
       bullets: [
         'Border-risk visualisation · emergency SOS mesh network concept',
-        'Live demo deployed on Render',
+        'Deployed on Render',
       ],
       tech: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Social Impact'],
       badgeTone: 'text-emerald-200 bg-emerald-500/10',
@@ -233,8 +255,16 @@ const Projects = () => {
 
   return (
     <section id="projects" className="section bg-bg-secondary/40 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 blur-[140px] rounded-full" />
-      <div className="absolute bottom-0 left-0 w-[420px] h-[420px] bg-white/5 blur-[140px] rounded-full" />
+      <motion.div
+        className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 blur-[140px] rounded-full"
+        animate={{ y: [0, -20, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute bottom-0 left-0 w-[420px] h-[420px] bg-white/5 blur-[140px] rounded-full"
+        animate={{ y: [0, 16, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+      />
       <div className="max-w-7xl mx-auto relative z-[1]">
         {/* Section Title */}
         <motion.div

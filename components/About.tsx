@@ -64,6 +64,8 @@ const About = () => {
             <motion.div
               className="relative"
               whileHover={{ y: -8, transition: { duration: 0.4 } }}
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
             >
               <motion.div
                 className="absolute -inset-3 bg-accent/10 rounded-2xl blur-xl"
@@ -130,9 +132,12 @@ const About = () => {
                 transition={{ duration: 0.5, ease, delay: 0.9 }}
               >
                 {quickInfo.map((item, index) => (
-                  <div
+                  <motion.div
                     key={item.label}
                     className={`flex items-start gap-2.5 pb-2.5 ${index < quickInfo.length - 1 ? 'border-b border-white/10' : ''}`}
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+                    transition={{ duration: 0.4, delay: 1 + index * 0.12 }}
                   >
                     <span className="mt-0.5 text-accent/80">
                       <item.icon className="h-3.5 w-3.5" />
@@ -145,7 +150,7 @@ const About = () => {
                         {item.value}
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </motion.div>,
 
@@ -167,12 +172,14 @@ const About = () => {
                 transition={{ duration: 0.6, ease, delay: 1.35 }}
               >
                 {['Computer Vision', 'NLP', 'Machine Learning', 'AI Accessibility','Web Development'].map((item) => (
-                  <span
+                  <motion.span
                     key={item}
                     className="px-3 py-1 rounded-full text-xs font-medium bg-bg-secondary/80 text-gray-200 border border-white/5"
+                    whileHover={{ y: -2, scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
                   >
                     {item}
-                  </span>
+                  </motion.span>
                 ))}
               </motion.div>,
 
