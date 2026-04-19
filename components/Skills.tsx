@@ -58,6 +58,70 @@ import {
 const Skills = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
+  const iconColorMap: Record<string, string> = {
+    'Computer Vision': 'text-emerald-400',
+    NLP: 'text-sky-400',
+    LLMs: 'text-purple-400',
+    'Gesture Recognition': 'text-amber-400',
+    'AI Automation': 'text-rose-400',
+    'Prompt Engineering': 'text-fuchsia-400',
+    LangChain: 'text-cyan-400',
+    Ollama: 'text-indigo-400',
+    OpenCV: 'text-lime-400',
+    MediaPipe: 'text-teal-400',
+    'Hugging Face': 'text-pink-400',
+    'Scikit-learn': 'text-blue-400',
+    Python: 'text-yellow-400',
+    java: 'text-orange-400',
+    'C++': 'text-blue-300',
+    JavaScript: 'text-amber-300',
+    'HTML / CSS': 'text-rose-300',
+    SQL: 'text-emerald-300',
+    Bash: 'text-gray-300',
+    FastAPI: 'text-emerald-400',
+    Flask: 'text-red-300',
+    'REST APIs': 'text-sky-300',
+    'Telegram Bot API': 'text-cyan-300',
+    Vercel: 'text-white',
+    React: 'text-cyan-400',
+    Next: 'text-gray-200',
+    'Git & GitHub': 'text-orange-400',
+    'VS Code': 'text-blue-400',
+    Jupyter: 'text-amber-400',
+    Docker: 'text-sky-400',
+    Postman: 'text-orange-300',
+    Linux: 'text-lime-300',
+    RAG: 'text-fuchsia-300',
+    'Offline-first AI': 'text-emerald-300',
+    'Voice Interfaces': 'text-purple-300',
+    'AI Accessibility': 'text-rose-300',
+    EdTech: 'text-indigo-300',
+    'Production Deployment': 'text-amber-300',
+    MongoDB: 'text-emerald-400',
+    PostgreSQL: 'text-sky-400',
+    Firebase: 'text-yellow-400',
+    'Vector Databases': 'text-teal-400',
+    'Data Preprocessing': 'text-lime-400',
+    'ETL Pipelines': 'text-cyan-400',
+    'Model Serving': 'text-purple-400',
+    'API Containerization': 'text-blue-400',
+    'CI/CD Pipelines': 'text-rose-400',
+    'Inference Optimization': 'text-amber-400',
+    'System Architecture': 'text-emerald-400',
+    'Edge Deployment': 'text-orange-400',
+    'Speech Recognition': 'text-fuchsia-400',
+    'Text-to-Speech': 'text-sky-400',
+    'Webcam / Sensor Input': 'text-teal-400',
+    'PDF Processing': 'text-red-300',
+    'Slide Generation': 'text-amber-300',
+    'Bot Interfaces': 'text-cyan-400',
+    'Client Communication': 'text-rose-300',
+    'Problem Solving': 'text-lime-300',
+    'Self-directed Learning': 'text-indigo-300',
+    'Project Ownership': 'text-orange-300',
+    'Technical Documentation': 'text-sky-300',
+  };
+
   const iconMap: Record<string, LucideIcon> = {
     'Computer Vision': Eye,
     NLP: MessageCircle,
@@ -163,7 +227,17 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="section bg-bg py-10 md:py-12" ref={sectionRef}>
+    <section id="skills" className="section bg-bg py-10 md:py-12 relative overflow-hidden" ref={sectionRef}>
+      <motion.div
+        className="absolute -top-32 left-0 h-56 w-56 rounded-full bg-accent/10 blur-[120px]"
+        animate={{ y: [0, -18, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute -bottom-32 right-0 h-64 w-64 rounded-full bg-white/5 blur-[140px]"
+        animate={{ y: [0, 16, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+      />
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Title */}
         <motion.div
@@ -208,7 +282,11 @@ const Skills = () => {
               transition={{ duration: 0.6, delay: catIndex * 0.08 }}
               whileHover={{ borderColor: 'rgba(212, 164, 58, 0.35)' }}
             >
-              <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-accent/5 blur-3xl" />
+              <motion.div
+                className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-accent/5 blur-3xl"
+                animate={{ opacity: [0.2, 0.45, 0.2] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+              />
               <div className="relative flex items-center justify-between gap-4 mb-5">
                 <p className="text-xs uppercase tracking-[0.26em] text-accent/80">
                   {category.category}
@@ -218,14 +296,21 @@ const Skills = () => {
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                 {category.skills.map((skill) => {
                   const Icon = iconMap[skill] ?? Dot;
+                  const iconTone = iconColorMap[skill] ?? 'text-accent';
                   return (
-                    <span
+                    <motion.span
                       key={skill}
                       className={`inline-flex w-full items-center gap-2.5 rounded-full px-4 py-2 text-sm font-medium border transition-all duration-300 ${category.pillClass}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: '-80px' }}
+                      transition={{ duration: 0.35 }}
+                      whileHover={{ y: -3, scale: 1.02, borderColor: 'rgba(212, 164, 58, 0.5)' }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      <Icon className="h-4 w-4 text-accent" />
+                      <Icon className={`h-4 w-4 ${iconTone}`} />
                       {skill}
-                    </span>
+                    </motion.span>
                   );
                 })}
               </div>
