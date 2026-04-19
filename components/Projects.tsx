@@ -3,6 +3,14 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
+const techHighlights = new Set([
+  'Python',
+  'OpenCV',
+  'MediaPipe',
+  'PyAutoGUI',
+  'Real-time',
+]);
+
 const ProjectCard = ({
   project,
   index,
@@ -26,7 +34,7 @@ const ProjectCard = ({
 }) => {
   return (
     <motion.div
-      className="card p-7 md:p-8 h-full flex flex-col justify-between"
+      className="card p-7 md:p-8 h-full flex flex-col justify-between relative overflow-hidden"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
@@ -40,7 +48,8 @@ const ProjectCard = ({
         boxShadow: '0 18px 60px rgba(0, 0, 0, 0.35)',
       }}
     >
-      <div>
+      <div className="absolute inset-0 opacity-100 pointer-events-none" style={{ background: 'linear-gradient(135deg, rgba(56,189,248,0.07), rgba(99,102,241,0.07), rgba(236,72,153,0.07))' }} />
+      <div className="relative">
         <div className="flex items-center justify-between gap-3 mb-5">
           <div className="flex items-center gap-2">
             {project.lead && (
@@ -49,7 +58,7 @@ const ProjectCard = ({
               </span>
             )}
             <span
-              className={`text-[11px] font-semibold px-3 py-1 rounded-full border border-white/10 ${
+              className={`text-[11px] font-semibold px-3 py-1 rounded-full border border-white/10 bg-gradient-to-r from-sky-400 via-blue-400 to-indigo-400 text-transparent bg-clip-text ${
                 project.badgeTone
               }`}
             >
@@ -62,7 +71,7 @@ const ProjectCard = ({
           </div>
         </div>
 
-        <h3 className="text-xl md:text-2xl font-bold text-white mb-3 font-heading">
+        <h3 className="text-xl md:text-2xl font-bold mb-3 font-heading bg-gradient-to-r from-sky-300 via-blue-300 to-indigo-300 text-transparent bg-clip-text">
           {project.title}
         </h3>
 
@@ -83,7 +92,11 @@ const ProjectCard = ({
           {project.tech.map((tech, idx) => (
             <motion.span
               key={idx}
-              className="text-xs px-3 py-1 rounded-full border border-white/10 text-gray-400"
+              className={`text-xs px-3 py-1 rounded-full border border-white/10 ${
+                techHighlights.has(tech)
+                  ? 'bg-gradient-to-r from-sky-300 via-blue-300 to-indigo-300 text-transparent bg-clip-text'
+                  : 'text-gray-400'
+              }`}
               whileHover={{ borderColor: 'rgba(56,189,248,0.6)', color: '#38bdf8' }}
             >
               {tech}
@@ -235,7 +248,13 @@ const Projects = () => {
     <section id="projects" className="section bg-bg-secondary/40 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 blur-[140px] rounded-full" />
       <div className="absolute bottom-0 left-0 w-[420px] h-[420px] bg-white/5 blur-[140px] rounded-full" />
-      <div className="max-w-7xl mx-auto relative z-[1]">
+      <motion.div
+        className="max-w-7xl mx-auto relative z-[1]"
+        initial={{ opacity: 0, y: 24, scale: 0.98, filter: 'blur(6px)' }}
+        whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+      >
         {/* Section Title */}
         <motion.div
           className="text-center mb-12"
@@ -272,12 +291,12 @@ const Projects = () => {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-6 md:gap-7">
+        <div className="grid grid-cols-1 gap-6 md:gap-7">
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
