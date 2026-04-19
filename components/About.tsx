@@ -10,9 +10,14 @@ const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
-  const quickInfoColors: Record<string, string> = {
+  const quickInfoLabelColors: Record<string, string> = {
     Status: 'text-sky-300',
-    'Core Stack': 'text-sky-300',
+    'Core Stack': 'bg-gradient-to-r from-red-400 to-rose-400 text-transparent bg-clip-text',
+    Focus: 'text-emerald-300',
+  };
+  const quickInfoIconColors: Record<string, string> = {
+    Status: 'text-sky-300',
+    'Core Stack': 'text-red-400',
     Focus: 'text-emerald-300',
   };
   const focusPillColors = [
@@ -174,7 +179,8 @@ const About = () => {
                 transition={{ duration: 0.5, ease, delay: 0.9 }}
               >
                 {quickInfo.map((item, index) => {
-                  const tone = quickInfoColors[item.label] ?? 'text-accent/80';
+                  const labelTone = quickInfoLabelColors[item.label] ?? 'text-accent/80';
+                  const iconTone = quickInfoIconColors[item.label] ?? 'text-accent/80';
                   return (
                     <motion.div
                       key={item.label}
@@ -183,11 +189,11 @@ const About = () => {
                       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
                       transition={{ duration: 0.4, delay: 1 + index * 0.12 }}
                     >
-                      <span className={`mt-0.5 ${tone}`}>
+                      <span className={`mt-0.5 ${iconTone}`}>
                         <item.icon className="h-3.5 w-3.5" />
                       </span>
                       <div>
-                        <p className={`text-[10px] uppercase tracking-[0.24em] ${tone}`}>
+                        <p className={`text-[10px] uppercase tracking-[0.24em] ${labelTone}`}>
                           {item.label}
                         </p>
                         <p className="text-white text-[14px] font-semibold">
