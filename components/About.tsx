@@ -106,7 +106,7 @@ const About = () => {
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
                 transition={{ duration: 0.7, ease, delay: 0.3 }}
               >
-                I build AI systems that make <span className="text-accent font-medium">real-world services</span> accessible to everyone.
+                I build AI systems that make <span className="bg-gradient-to-r from-sky-400 via-blue-400 to-indigo-400 text-transparent bg-clip-text font-medium">real-world services</span> accessible to everyone.
               </motion.p>,
 
               <motion.p
