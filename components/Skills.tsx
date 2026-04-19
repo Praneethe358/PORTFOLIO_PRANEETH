@@ -286,13 +286,14 @@ const Skills = () => {
           {proficiencies.map((category, catIndex) => (
             <motion.div
               key={category.category}
-              className="relative overflow-hidden border border-white/10 rounded-2xl px-6 pt-6 pb-4 md:px-8 md:pt-7 md:pb-5 min-h-[230px] bg-bg-secondary/70 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
+              className="group relative overflow-hidden border border-white/10 rounded-2xl px-6 pt-6 pb-4 md:px-8 md:pt-7 md:pb-5 min-h-[230px] bg-bg-secondary/70 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: catIndex * 0.08 }}
               whileHover={{ borderColor: 'rgba(212, 164, 58, 0.45)', y: -4 }}
             >
+              <div className="pointer-events-none absolute inset-0 rounded-2xl border border-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ borderImage: 'linear-gradient(120deg, rgba(56,189,248,0.9), rgba(212,164,58,0.9), rgba(236,72,153,0.9)) 1' }} />
               <motion.div
                 className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-accent/5 blur-3xl"
                 animate={{ opacity: [0.2, 0.45, 0.2] }}
@@ -305,6 +306,15 @@ const Skills = () => {
                 style={{
                   background:
                     'radial-gradient(600px circle at 15% 20%, rgba(56,189,248,0.08), transparent 45%)',
+                }}
+              />
+              <motion.div
+                className="absolute -left-1/2 top-0 h-full w-1/2 opacity-0"
+                animate={{ x: ['-50%', '160%'], opacity: [0, 0.6, 0] }}
+                transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}
+                style={{
+                  background:
+                    'linear-gradient(110deg, transparent, rgba(212,164,58,0.12), transparent)',
                 }}
               />
               <div className="relative flex items-center justify-between gap-4 mb-5">
