@@ -104,11 +104,11 @@ const Navigation = () => {
           <span className="text-gray-600 mx-4">|</span>
           <motion.a
             href="tel:+919080689844"
-            className="flex items-center gap-2 text-sm text-gray-400 hover:text-accent transition-colors"
+            className="flex items-center text-sm text-gray-400 hover:text-accent transition-colors"
             whileHover={{ scale: 1.05 }}
+            aria-label="Call"
           >
-            <FaPhone size={10} />
-            <span className="tracking-wide">+91 9080689844</span>
+            <FaPhone size={12} />
           </motion.a>
         </div>
 
