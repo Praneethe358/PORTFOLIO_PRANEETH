@@ -122,6 +122,17 @@ const Skills = () => {
     'Technical Documentation': 'text-sky-300',
   };
 
+  const categoryColorMap: Record<string, string> = {
+    'AI & Machine Learning': 'text-emerald-300',
+    'Frameworks & Libraries': 'text-cyan-300',
+    Languages: 'text-amber-300',
+    'Web & APIs': 'text-rose-300',
+    'Tools & Platforms': 'text-indigo-300',
+    'Domains & Concepts': 'text-lime-300',
+    'Data & Backend': 'text-sky-300',
+    'MLOps & System Design': 'text-orange-300',
+  };
+
   const iconMap: Record<string, LucideIcon> = {
     'Computer Vision': Eye,
     NLP: MessageCircle,
@@ -288,7 +299,11 @@ const Skills = () => {
                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
               />
               <div className="relative flex items-center justify-between gap-4 mb-5">
-                <p className="text-xs uppercase tracking-[0.26em] text-accent/80">
+                <p
+                  className={`text-xs uppercase tracking-[0.26em] ${
+                    categoryColorMap[category.category] ?? 'text-accent/80'
+                  }`}
+                >
                   {category.category}
                 </p>
                 <span className="h-[2px] w-10 bg-accent/70 rounded-full" />
