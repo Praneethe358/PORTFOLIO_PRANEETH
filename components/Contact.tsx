@@ -622,70 +622,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Quick CTA Card */}
-            <motion.div
-              className="relative rounded-3xl overflow-hidden group cursor-pointer"
-              whileHover={{ scale: 1.01 }}
-              transition={{ duration: 0.3 }}
-            >
-              {/* Animated border gradient */}
-              <div
-                className="absolute inset-0 rounded-3xl p-[1px]"
-                style={{
-                  background:
-                    'linear-gradient(135deg, #38bdf8 0%, #6366f1 33%, #8b5cf6 66%, #38bdf8 100%)',
-                  backgroundSize: '300% 300%',
-                  animation: 'gradientShift 4s ease infinite',
-                }}
-              >
-                <div className="w-full h-full rounded-3xl bg-bg-card" />
-              </div>
 
-              <a
-                href="mailto:praneeth0358@gmail.com"
-                className="relative block p-5"
-              >
-                {/* Hover glow */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                  style={{
-                    background:
-                      'radial-gradient(circle at 50% 50%, rgba(56,189,248,0.08) 0%, transparent 70%)',
-                  }}
-                />
-
-                <div className="relative text-center">
-                  <motion.div
-                    className="w-10 h-10 mx-auto mb-3 rounded-2xl bg-gradient-to-br from-accent/20 to-violet-500/20 border border-accent/20 flex items-center justify-center"
-                    animate={{
-                      boxShadow: [
-                        '0 0 20px rgba(56,189,248,0.1)',
-                        '0 0 40px rgba(56,189,248,0.2)',
-                        '0 0 20px rgba(56,189,248,0.1)',
-                      ],
-                    }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                  >
-                    <FaEnvelope size={16} className="text-accent" />
-                  </motion.div>
-
-                  <h4 className="text-white font-bold font-heading mb-1">
-                    Prefer email?
-                  </h4>
-                  <p className="text-gray-500 text-xs mb-3">
-                    Drop me a direct message anytime
-                  </p>
-
-                  <div className="inline-flex items-center gap-2 text-accent text-sm font-semibold group-hover:gap-3 transition-all duration-300">
-                    <span>praneeth0358@gmail.com</span>
-                    <FaArrowRight
-                      size={12}
-                      className="transition-transform duration-300 group-hover:translate-x-1"
-                    />
-                  </div>
-                </div>
-              </a>
-            </motion.div>
           </motion.div>
         </div>
       </div>
