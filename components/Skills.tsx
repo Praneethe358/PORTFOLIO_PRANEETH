@@ -127,7 +127,7 @@ const Skills = () => {
     'Frameworks & Libraries': 'text-cyan-200 drop-shadow-[0_0_10px_rgba(34,211,238,0.55)]',
     Languages: 'text-sky-200 drop-shadow-[0_0_10px_rgba(56,189,248,0.55)]',
     'Web & APIs': 'text-rose-200 drop-shadow-[0_0_10px_rgba(251,113,133,0.55)]',
-    'Tools & Platforms': 'text-indigo-200 drop-shadow-[0_0_10px_rgba(129,140,248,0.55)]',
+
     'Domains & Concepts': 'text-lime-200 drop-shadow-[0_0_10px_rgba(163,230,53,0.55)]',
     'Data & Backend': 'text-sky-200 drop-shadow-[0_0_10px_rgba(56,189,248,0.55)]',
     'MLOps & System Design': 'text-indigo-200 drop-shadow-[0_0_10px_rgba(99,102,241,0.55)]',
@@ -215,11 +215,7 @@ const Skills = () => {
       pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
       skills: ['FastAPI', 'Flask', 'REST APIs', 'Telegram Bot API', 'Vercel', 'React','Next'],
     },
-    {
-      category: 'Tools & Platforms',
-      pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
-      skills: ['Git & GitHub', 'VS Code', 'Jupyter', 'Docker', 'Postman', 'Linux'],
-    },
+
     {
       category: 'Domains & Concepts',
       pillClass: 'bg-bg/60 text-gray-200 border-white/10 hover:border-accent/40 hover:bg-accent/10',
