@@ -11,7 +11,6 @@ import {
   FaPaperPlane,
   FaArrowRight,
 } from 'react-icons/fa';
-import { HiSparkles } from 'react-icons/hi';
 
 /* ───── Floating Orb Component ───── */
 const FloatingOrb = ({
@@ -203,7 +202,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative py-28 md:py-36 px-4 md:px-8 lg:px-16 overflow-hidden"
+      className="relative py-14 px-4 md:px-8 lg:px-16 overflow-hidden"
       style={{ background: 'linear-gradient(180deg, #0b0f1a 0%, #080c16 50%, #0b0f1a 100%)' }}
     >
       {/* ───── Ambient Background ───── */}
@@ -233,54 +232,22 @@ const Contact = () => {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* ───── Section Header ───── */}
+        {/* ───── Compact Section Label ───── */}
         <motion.div
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 40 }}
+          className="mb-6"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
         >
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 mb-6"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-          >
-            <HiSparkles className="text-accent text-sm" />
-            <span className="text-accent text-xs font-semibold tracking-widest uppercase">
-              Get In Touch
-            </span>
-          </motion.div>
-
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold mb-5">
-            <span className="text-white">Let&apos;s Build </span>
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage: 'linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%)',
-              }}
-            >
-              Something Amazing
-            </span>
+          <h2 className="text-2xl md:text-3xl font-heading font-extrabold text-white">
+            Get In <span className="text-accent">Touch</span>
           </h2>
-
-          <motion.p
-            className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
-            I&apos;m always excited to collaborate on innovative projects.
-            Whether you have a question, proposal, or just want to say hi — my inbox is open.
-          </motion.p>
         </motion.div>
 
         {/* ───── Contact Info Tiles ───── */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-5"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -297,7 +264,7 @@ const Contact = () => {
               >
                 <TiltCard>
                   <div
-                    className="relative p-6 rounded-2xl border border-white/[0.06] overflow-hidden transition-all duration-500 group-hover:border-accent/30"
+                    className="relative p-4 rounded-2xl border border-white/[0.06] overflow-hidden transition-all duration-500 group-hover:border-accent/30"
                     style={{
                       background:
                         'linear-gradient(135deg, rgba(19, 24, 48, 0.8) 0%, rgba(11, 15, 26, 0.9) 100%)',
@@ -310,13 +277,13 @@ const Contact = () => {
                       style={{ background: `radial-gradient(circle at 30% 50%, ${item.glow} 0%, transparent 70%)` }}
                     />
 
-                    <div className="relative flex items-center gap-4">
+                    <div className="relative flex items-center gap-3">
                       <div
-                        className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} p-[1px] flex-shrink-0`}
+                        className={`w-9 h-9 rounded-xl bg-gradient-to-br ${item.gradient} p-[1px] flex-shrink-0`}
                       >
                         <div className="w-full h-full rounded-xl bg-bg-card flex items-center justify-center group-hover:bg-transparent transition-colors duration-500">
                           <Icon
-                            size={18}
+                            size={14}
                             className="text-white transition-transform duration-300 group-hover:scale-110"
                           />
                         </div>
@@ -350,7 +317,7 @@ const Contact = () => {
         </motion.div>
 
         {/* ───── Main Content: Form + Social ───── */}
-        <div className="grid lg:grid-cols-5 gap-8">
+        <div className="grid lg:grid-cols-5 gap-5">
           {/* Contact Form — Takes 3 cols */}
           <motion.div
             className="lg:col-span-3"
@@ -370,8 +337,8 @@ const Contact = () => {
               {/* Top accent line */}
               <div className="h-[2px] bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
 
-              <div className="p-8 md:p-10">
-                <div className="flex items-center gap-3 mb-8">
+              <div className="p-5 md:p-6">
+                <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
                     <FaPaperPlane size={14} className="text-accent" />
                   </div>
@@ -385,8 +352,8 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid md:grid-cols-2 gap-5">
+                <form onSubmit={handleSubmit} className="space-y-3">
+                  <div className="grid md:grid-cols-2 gap-3">
                     {/* Name */}
                     <div className="relative group">
                       <label className="block text-gray-500 text-xs uppercase tracking-wider font-medium mb-2">
@@ -402,7 +369,7 @@ const Contact = () => {
                           }
                           onFocus={() => setFocusedField('name')}
                           onBlur={() => setFocusedField(null)}
-                          className="w-full px-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder-gray-600 outline-none transition-all duration-300 focus:border-accent/50 focus:bg-white/[0.05] focus:shadow-[0_0_20px_rgba(56,189,248,0.08)]"
+                          className="w-full px-3 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder-gray-600 outline-none transition-all duration-300 focus:border-accent/50 focus:bg-white/[0.05] focus:shadow-[0_0_20px_rgba(56,189,248,0.08)]"
                           placeholder="John Doe"
                         />
                         <motion.div
@@ -432,7 +399,7 @@ const Contact = () => {
                           }
                           onFocus={() => setFocusedField('email')}
                           onBlur={() => setFocusedField(null)}
-                          className="w-full px-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder-gray-600 outline-none transition-all duration-300 focus:border-accent/50 focus:bg-white/[0.05] focus:shadow-[0_0_20px_rgba(56,189,248,0.08)]"
+                          className="w-full px-3 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder-gray-600 outline-none transition-all duration-300 focus:border-accent/50 focus:bg-white/[0.05] focus:shadow-[0_0_20px_rgba(56,189,248,0.08)]"
                           placeholder="john@example.com"
                         />
                         <motion.div
@@ -463,7 +430,7 @@ const Contact = () => {
                         }
                         onFocus={() => setFocusedField('subject')}
                         onBlur={() => setFocusedField(null)}
-                        className="w-full px-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder-gray-600 outline-none transition-all duration-300 focus:border-accent/50 focus:bg-white/[0.05] focus:shadow-[0_0_20px_rgba(56,189,248,0.08)]"
+                        className="w-full px-3 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder-gray-600 outline-none transition-all duration-300 focus:border-accent/50 focus:bg-white/[0.05] focus:shadow-[0_0_20px_rgba(56,189,248,0.08)]"
                         placeholder="Project Collaboration"
                       />
                       <motion.div
@@ -486,14 +453,14 @@ const Contact = () => {
                     <div className="relative">
                       <textarea
                         required
-                        rows={5}
+                        rows={4}
                         value={formData.message}
                         onChange={(e) =>
                           setFormData({ ...formData, message: e.target.value })
                         }
                         onFocus={() => setFocusedField('message')}
                         onBlur={() => setFocusedField(null)}
-                        className="w-full px-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder-gray-600 outline-none transition-all duration-300 resize-none focus:border-accent/50 focus:bg-white/[0.05] focus:shadow-[0_0_20px_rgba(56,189,248,0.08)]"
+                        className="w-full px-3 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder-gray-600 outline-none transition-all duration-300 resize-none focus:border-accent/50 focus:bg-white/[0.05] focus:shadow-[0_0_20px_rgba(56,189,248,0.08)]"
                         placeholder="Tell me about your project idea..."
                       />
                       <motion.div
@@ -589,15 +556,15 @@ const Contact = () => {
             >
               <div className="h-[2px] bg-gradient-to-r from-transparent via-violet-500/40 to-transparent" />
 
-              <div className="p-8 flex flex-col h-full">
+              <div className="p-5 flex flex-col h-full">
                 <h3 className="text-lg font-bold text-white mb-1 font-heading">
                   Connect With Me
                 </h3>
-                <p className="text-gray-500 text-sm mb-8">
+                <p className="text-gray-500 text-sm mb-4">
                   Find me on social platforms
                 </p>
 
-                <div className="space-y-4 flex-1">
+                <div className="space-y-2 flex-1">
                   {socialLinks.map((link, i) => {
                     const Icon = link.icon;
                     return (
@@ -607,7 +574,7 @@ const Contact = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={link.label}
-                        className="group flex items-center gap-4 p-4 rounded-2xl border border-white/[0.04] hover:border-white/[0.12] transition-all duration-400"
+                        className="group flex items-center gap-3 p-3 rounded-2xl border border-white/[0.04] hover:border-white/[0.12] transition-all duration-400"
                         style={{ background: 'rgba(255,255,255,0.02)' }}
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -676,7 +643,7 @@ const Contact = () => {
 
               <a
                 href="mailto:praneeth0358@gmail.com"
-                className="relative block p-8"
+                className="relative block p-5"
               >
                 {/* Hover glow */}
                 <div
@@ -689,7 +656,7 @@ const Contact = () => {
 
                 <div className="relative text-center">
                   <motion.div
-                    className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-accent/20 to-violet-500/20 border border-accent/20 flex items-center justify-center"
+                    className="w-10 h-10 mx-auto mb-3 rounded-2xl bg-gradient-to-br from-accent/20 to-violet-500/20 border border-accent/20 flex items-center justify-center"
                     animate={{
                       boxShadow: [
                         '0 0 20px rgba(56,189,248,0.1)',
@@ -699,13 +666,13 @@ const Contact = () => {
                     }}
                     transition={{ duration: 3, repeat: Infinity }}
                   >
-                    <FaEnvelope size={20} className="text-accent" />
+                    <FaEnvelope size={16} className="text-accent" />
                   </motion.div>
 
-                  <h4 className="text-white font-bold font-heading mb-1.5">
+                  <h4 className="text-white font-bold font-heading mb-1">
                     Prefer email?
                   </h4>
-                  <p className="text-gray-500 text-sm mb-4">
+                  <p className="text-gray-500 text-xs mb-3">
                     Drop me a direct message anytime
                   </p>
 
@@ -721,47 +688,19 @@ const Contact = () => {
             </motion.div>
           </motion.div>
         </div>
-
-        {/* ───── Bottom Availability Status ───── */}
-        <motion.div
-          className="mt-16 flex items-center justify-center gap-3"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-        >
-          <div className="relative flex items-center gap-2">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-            </span>
-            <span className="text-gray-500 text-sm">
-              Currently available for freelance & collaboration
-            </span>
-          </div>
-        </motion.div>
       </div>
 
-      {/* ───── Keyframe Animations (injected via style tag) ───── */}
-      <style jsx>{`
+      {/* ───── Keyframe Animations ───── */}
+      <style dangerouslySetInnerHTML={{ __html: `
         @keyframes shimmer {
-          0% {
-            background-position: -200% 0;
-          }
-          100% {
-            background-position: 200% 0;
-          }
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
         }
         @keyframes gradientShift {
-          0%,
-          100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
         }
-      `}</style>
+      `}} />
     </section>
   );
 };

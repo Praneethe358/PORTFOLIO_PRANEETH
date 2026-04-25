@@ -1,165 +1,226 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaGithub, FaExternalLinkAlt, FaArrowRight } from 'react-icons/fa';
 
-const techHighlights = new Set([
-  'Python',
-  'OpenCV',
-  'MediaPipe',
-  'PyAutoGUI',
-  'Real-time',
-]);
 
-const ProjectCard = ({
-  project,
-  index,
-}: {
-  project: {
-    id: number;
-    lead?: string;
-    title: string;
-    category: string;
-    summary: string;
-    bullets: string[];
-    tech: string[];
-    badgeTone: string;
-    meta: string;
-    metaDot: string;
-    github: string;
-    live?: string;
-    liveLabel?: string;
-  };
-  index: number;
-}) => {
+/* ─── Types ─── */
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  summary: string;
+  bullets: string[];
+  tech: string[];
+  badgeTone: string;
+  accentColor: string;
+  glowColor: string;
+  meta: string;
+  isLive?: boolean;
+  github: string;
+  live?: string;
+  liveLabel?: string;
+  featured?: boolean;
+}
+
+
+
+/* ─── Featured (full-width) Card ─── */
+const FeaturedCard = ({ project, index }: { project: Project; index: number }) => {
+  const [hovered, setHovered] = useState(false);
+
   return (
     <motion.div
-      className="card p-7 md:p-8 h-full flex flex-col justify-between relative overflow-hidden"
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
-      transition={{
-        duration: 0.6,
-        delay: 0.1 * index,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      }}
-      whileHover={{
-        y: -6,
-        boxShadow: '0 18px 60px rgba(0, 0, 0, 0.35)',
-      }}
+      transition={{ duration: 0.8, delay: 0.1 * index, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="relative group"
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
     >
-      <div className="absolute inset-0 opacity-100 pointer-events-none" style={{ background: 'linear-gradient(135deg, rgba(56,189,248,0.07), rgba(99,102,241,0.07), rgba(236,72,153,0.07))' }} />
-      <div className="relative">
-        <div className="flex items-center justify-between gap-3 mb-5">
-          <div className="flex items-center gap-2">
-            {project.lead && (
-              <span className="text-[11px] uppercase tracking-[0.25em] text-gray-400">
-                {project.lead}
-              </span>
-            )}
-            <span
-              className={`text-[11px] font-semibold px-3 py-1 rounded-full border border-white/10 bg-gradient-to-r from-sky-400 via-blue-400 to-indigo-400 text-transparent bg-clip-text ${
-                project.badgeTone
-              }`}
-            >
-              {project.category}
-            </span>
-          </div>
-          <div className="flex items-center gap-2 text-xs text-gray-400">
-            <span className={`w-2 h-2 rounded-full ${project.metaDot}`} />
-            <span>{project.meta}</span>
-          </div>
-        </div>
+      <div className="relative h-full">
+        {/* Animated border */}
+        <div
+          className="absolute -inset-[1px] rounded-3xl transition-opacity duration-500"
+          style={{
+            background: `linear-gradient(135deg, ${project.accentColor}40, transparent 50%, ${project.accentColor}20)`,
+            opacity: hovered ? 1 : 0,
+          }}
+        />
 
-        <h3 className="text-xl md:text-2xl font-bold mb-3 font-heading bg-gradient-to-r from-sky-300 via-blue-300 to-indigo-300 text-transparent bg-clip-text">
-          {project.title}
-        </h3>
-
-        <p className="text-gray-400 text-sm leading-relaxed mb-5">
-          {project.summary}
-        </p>
-
-        <ul className="space-y-2 text-sm text-gray-500 mb-6">
-          {project.bullets.map((item, idx) => (
-            <li key={idx} className="flex gap-3">
-              <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-accent/80" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-
-        <div className="flex flex-wrap gap-2">
-          {project.tech.map((tech, idx) => (
-            <motion.span
-              key={idx}
-              className={`text-xs px-3 py-1 rounded-full border border-white/10 ${
-                techHighlights.has(tech)
-                  ? 'bg-gradient-to-r from-sky-300 via-blue-300 to-indigo-300 text-transparent bg-clip-text'
-                  : 'text-gray-400'
-              }`}
-              whileHover={{ borderColor: 'rgba(56,189,248,0.6)', color: '#38bdf8' }}
-            >
-              {tech}
-            </motion.span>
-          ))}
-        </div>
-      </div>
-
-      <div className="flex flex-wrap gap-3 pt-6 border-t border-white/5">
-        <motion.a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-gray-300 hover:text-accent transition-colors"
-          whileHover={{ x: 3 }}
+        <div
+          className="relative rounded-3xl border border-white/[0.07] overflow-hidden"
+          style={{
+            background: 'linear-gradient(145deg, rgba(19,24,48,0.85) 0%, rgba(11,15,26,0.95) 100%)',
+            backdropFilter: 'blur(20px)',
+          }}
         >
-          <FaGithub size={18} />
-          <span className="text-sm font-medium">View on GitHub</span>
-        </motion.a>
-        {project.live && (
-          <motion.a
-            href={project.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-gray-300 hover:text-accent transition-colors"
-            whileHover={{ x: 3 }}
-          >
-            <FaExternalLinkAlt size={16} />
-            <span className="text-sm font-medium">{project.liveLabel ?? 'Live site'}</span>
-          </motion.a>
-        )}
+          {/* Top accent line */}
+          <div
+            className="h-[2px] w-full"
+            style={{ background: `linear-gradient(90deg, transparent, ${project.accentColor}, transparent)` }}
+          />
+
+          {/* Ambient glow */}
+          <div
+            className="absolute top-0 right-0 w-72 h-72 rounded-full pointer-events-none transition-opacity duration-700"
+            style={{
+              background: `radial-gradient(circle, ${project.glowColor} 0%, transparent 70%)`,
+              opacity: hovered ? 1 : 0.4,
+              filter: 'blur(40px)',
+            }}
+          />
+
+          <div className="relative p-8 md:p-10">
+            <div className="flex flex-col lg:flex-row gap-8">
+              {/* Left: content */}
+              <div className="flex-1">
+                {/* Header row */}
+                <div className="flex items-start justify-between gap-4 mb-5">
+                  <div className="flex items-center gap-3">
+                    {/* Number badge */}
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center font-mono font-bold text-sm flex-shrink-0 border"
+                      style={{
+                        background: `${project.accentColor}15`,
+                        borderColor: `${project.accentColor}30`,
+                        color: project.accentColor,
+                      }}
+                    >
+                      {String(project.id).padStart(2, '0')}
+                    </div>
+                    <div>
+                      <span
+                        className="text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full border"
+                        style={{
+                          background: `${project.accentColor}10`,
+                          borderColor: `${project.accentColor}30`,
+                          color: project.accentColor,
+                        }}
+                      >
+                        {project.category}
+                      </span>
+                    </div>
+                  </div>
+                  {/* Status */}
+                  <div className="flex items-center gap-1.5 flex-shrink-0">
+                    <span className="relative flex h-2 w-2">
+                      <span
+                        className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${project.isLive ? 'bg-emerald-400' : 'bg-sky-400'}`}
+                      />
+                      <span
+                        className={`relative inline-flex rounded-full h-2 w-2 ${project.isLive ? 'bg-emerald-500' : 'bg-sky-500'}`}
+                      />
+                    </span>
+                    <span className="text-gray-500 text-xs">{project.meta}</span>
+                  </div>
+                </div>
+
+                {/* Title */}
+                <h3 className="text-2xl md:text-3xl font-extrabold font-heading text-white mb-3 leading-tight">
+                  {project.title}
+                </h3>
+
+                {/* Summary */}
+                <p className="text-gray-400 text-sm leading-relaxed mb-5 max-w-2xl">
+                  {project.summary}
+                </p>
+
+                {/* Bullets */}
+                <ul className="space-y-2 mb-6">
+                  {project.bullets.map((b, i) => (
+                    <li key={i} className="flex items-start gap-3 text-sm text-gray-500">
+                      <span
+                        className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style={{ background: project.accentColor }}
+                      />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Tech chips */}
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((t, i) => (
+                    <motion.span
+                      key={i}
+                      className="text-xs px-3 py-1 rounded-full border border-white/[0.08] text-gray-400 transition-all duration-300"
+                      whileHover={{
+                        borderColor: `${project.accentColor}60`,
+                        color: project.accentColor,
+                        scale: 1.05,
+                      }}
+                      style={{ background: 'rgba(255,255,255,0.02)' }}
+                    >
+                      {t}
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right: links */}
+              <div className="flex lg:flex-col gap-3 lg:items-end justify-start lg:justify-center flex-shrink-0">
+                <motion.a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/[0.08] text-sm text-gray-300 font-medium transition-all duration-300 hover:border-white/20 hover:text-white"
+                  style={{ background: 'rgba(255,255,255,0.03)' }}
+                  whileHover={{ x: 2 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <FaGithub size={15} />
+                  GitHub
+                </motion.a>
+                {project.live && (
+                  <motion.a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300"
+                    style={{
+                      background: `linear-gradient(135deg, ${project.accentColor}CC 0%, ${project.accentColor}88 100%)`,
+                      color: '#0b0f1a',
+                    }}
+                    whileHover={{ scale: 1.03, filter: 'brightness(1.1)' }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    <FaExternalLinkAlt size={12} />
+                    {project.liveLabel ?? 'Live Site'}
+                  </motion.a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </motion.div>
   );
 };
 
+
+
+/* ─── Main Section ─── */
 const Projects = () => {
-  const projects = [
+  const projects: Project[] = [
     {
       id: 1,
+      featured: true,
       title: 'VOX — AI-Powered Exam Scribe Platform',
       category: 'Accessibility · Full-Stack · AI',
       summary:
-        'A fully voice-navigated examination platform that replaces human scribes for students with accessibility needs.',
+        'A fully voice-navigated examination platform that replaces human scribes for students with accessibility needs. Designed for zero dependency on external humans during exams.',
       bullets: [
         'Docker + Nginx + MongoDB · PWA with offline support · 13+ voice commands',
         'LLaMA 3 via Ollama for MCQ answer formatting · Web Speech API for STT/TTS',
       ],
-      tech: [
-        'React 18',
-        'TypeScript',
-        'FastAPI',
-        'Python',
-        'MongoDB',
-        'Docker',
-        'Ollama',
-        'face-api.js',
-        'Nginx',
-        'PWA',
-      ],
+      tech: ['React 18', 'TypeScript', 'FastAPI', 'Python', 'MongoDB', 'Docker', 'Ollama', 'face-api.js', 'Nginx', 'PWA'],
       badgeTone: 'text-sky-200 bg-sky-500/10',
+      accentColor: '#38bdf8',
+      glowColor: 'rgba(56,189,248,0.12)',
       meta: 'Built',
-      metaDot: 'bg-gray-500',
       github: 'https://github.com/Praneethe358',
     },
     {
@@ -167,50 +228,55 @@ const Projects = () => {
       title: 'Online Tutoring Platform',
       category: 'Full-Stack · Deployed',
       summary:
-        'Full-stack tutoring platform with distinct student, tutor, and admin roles, shipped to a paying client.',
+        'Full-stack tutoring platform with distinct student, tutor, and admin roles — shipped to a paying client.',
       bullets: [
-        'Role-based access — student / tutor / admin with separate dashboards',
+        'Role-based access · separate dashboards',
         'Live in production · delivered to a real client',
       ],
       tech: ['JavaScript', 'MongoDB', 'HTML/CSS', 'REST APIs', 'Vercel', 'Auth'],
       badgeTone: 'text-sky-200 bg-sky-500/10',
+      accentColor: '#34d399',
+      glowColor: 'rgba(52,211,153,0.12)',
       meta: 'Live — real client',
-      metaDot: 'bg-emerald-400',
+      isLive: true,
       github: 'https://github.com/Praneethe358',
       live: '#',
       liveLabel: 'Live site',
     },
     {
       id: 3,
-      title: 'Fisherman Border Detection — Marine Guardian AI',
+      title: 'Fisherman Border Detection',
       category: 'Computer Vision · AI',
       summary:
-        'Maritime safety dashboard prototype that visualises coastal border risk zones and telemetry.',
+        'Maritime safety dashboard that visualises coastal border risk zones and telemetry for fishermen.',
       bullets: [
-        'Border-risk visualisation · emergency SOS mesh network concept',
+        'Border-risk visualisation · emergency SOS mesh network',
         'Deployed on Render',
       ],
-      tech: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Social Impact'],
+      tech: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS'],
       badgeTone: 'text-emerald-200 bg-emerald-500/10',
+      accentColor: '#a78bfa',
+      glowColor: 'rgba(167,139,250,0.12)',
       meta: 'Built',
-      metaDot: 'bg-emerald-400',
+      isLive: true,
       github: 'https://github.com/Praneethe358',
       live: '#',
     },
     {
       id: 4,
-      title: 'Gesture-Controlled Presentation Controller',
+      title: 'Gesture-Controlled Presentation',
       category: 'Computer Vision',
       summary:
-        'Controls presentation slides hands-free using real-time hand gesture detection.',
+        'Controls slides hands-free using real-time hand gesture detection at 30+ FPS.',
       bullets: [
-        '30+ FPS real-time performance · works with any presentation software',
-        'Configurable swipe threshold and cooldown in config.py',
+        '30+ FPS · works with any software',
+        'Configurable swipe threshold in config.py',
       ],
-      tech: ['Python', 'OpenCV', 'MediaPipe', 'PyAutoGUI', 'Real-time'],
+      tech: ['Python', 'OpenCV', 'MediaPipe', 'PyAutoGUI'],
       badgeTone: 'text-indigo-200 bg-indigo-500/10',
-      meta: 'Built · 30+ FPS',
-      metaDot: 'bg-gray-500',
+      accentColor: '#818cf8',
+      glowColor: 'rgba(129,140,248,0.12)',
+      meta: '30+ FPS',
       github: 'https://github.com/Praneethe358',
     },
     {
@@ -218,12 +284,13 @@ const Projects = () => {
       title: 'AR Social App',
       category: 'Full-Stack · Social',
       summary:
-        'Full-stack social app with a React + Vite frontend and Node.js backend deployed via Render.',
-      bullets: ['React + Vite · structured API layer · Render deployment'],
-      tech: ['React', 'Vite', 'JavaScript', 'Node.js', 'CSS', 'Render'],
+        'Full-stack social app with React + Vite frontend and Node.js backend deployed via Render.',
+      bullets: ['React + Vite · structured API · Render deployment'],
+      tech: ['React', 'Vite', 'JavaScript', 'Node.js', 'CSS'],
       badgeTone: 'text-rose-200 bg-rose-500/10',
+      accentColor: '#f472b6',
+      glowColor: 'rgba(244,114,182,0.12)',
       meta: 'Built',
-      metaDot: 'bg-sky-300',
       github: 'https://github.com/Praneethe358',
     },
     {
@@ -231,72 +298,85 @@ const Projects = () => {
       title: 'Fake News Detection System',
       category: 'NLP · Machine Learning',
       summary:
-        'NLP pipeline that classifies misinformation in news articles with multiple classifier benchmarks.',
+        'NLP pipeline that classifies misinformation in news articles with multi-model benchmarking.',
       bullets: [
-        'Multi-model benchmarking with evaluation metrics comparison',
-        'End-to-end pipeline: raw text → features → trained classifier → prediction',
+        'Multi-model benchmarking + evaluation metrics',
+        'Raw text → features → classifier → prediction',
       ],
-      tech: ['Python', 'Scikit-learn', 'NLP', 'TF-IDF', 'Pandas', 'Classification'],
+      tech: ['Python', 'Scikit-learn', 'NLP', 'TF-IDF', 'Pandas'],
       badgeTone: 'text-orange-200 bg-orange-500/10',
+      accentColor: '#fb923c',
+      glowColor: 'rgba(251,146,60,0.12)',
       meta: 'Built',
-      metaDot: 'bg-gray-500',
       github: 'https://github.com/Praneethe358',
     },
   ];
 
+
+
   return (
-    <section id="projects" className="section bg-bg-secondary/40 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 blur-[140px] rounded-full" />
-      <div className="absolute bottom-0 left-0 w-[420px] h-[420px] bg-white/5 blur-[140px] rounded-full" />
-      <motion.div
-        className="max-w-7xl mx-auto relative z-[1]"
-        initial={{ opacity: 0, y: 24, scale: 0.98, filter: 'blur(6px)' }}
-        whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-      >
-        {/* Section Title */}
+    <section
+      id="projects"
+      className="relative py-24 px-4 md:px-8 lg:px-16 overflow-hidden"
+      style={{ background: 'linear-gradient(180deg, #0b0f1a 0%, #0a0e1a 100%)' }}
+    >
+      {/* Background orbs */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-20 right-0 w-[500px] h-[500px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(56,189,248,0.04) 0%, transparent 70%)', filter: 'blur(80px)' }} />
+        <div className="absolute bottom-20 left-0 w-[400px] h-[400px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.04) 0%, transparent 70%)', filter: 'blur(80px)' }} />
+        {/* Grid */}
+        <div className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage: 'linear-gradient(rgba(56,189,248,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.4) 1px, transparent 1px)',
+            backgroundSize: '80px 80px',
+          }} />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* ── Section Header ── */}
         <motion.div
-          className="text-center mb-12"
+          className="mb-14"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="section-title text-3xl md:text-4xl font-bold mb-3 inline-block">
-            {'Featured Projects'.split('').map((char, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: i * 0.05 }}
-                viewport={{ once: true, margin: '-50px' }}
-                className="inline-block"
-              >
-                {char === ' ' ? '\u00A0' : char}
-              </motion.span>
-            ))}
-          </h2>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold font-heading text-white leading-tight">
+                Featured{' '}
+                <span
+                  className="bg-clip-text text-transparent"
+                  style={{ backgroundImage: 'linear-gradient(135deg, #38bdf8 0%, #818cf8 60%, #c084fc 100%)' }}
+                >
+                  Projects
+                </span>
+              </h2>
+            </div>
+
+          </div>
+
+          {/* Animated underline */}
           <motion.div
-            className="h-1 bg-accent mx-auto rounded-full"
-            initial={{ width: 0 }}
-            whileInView={{ width: 48 }}
+            className="mt-5 h-px"
+            style={{ background: 'linear-gradient(90deg, #38bdf8, #818cf8, transparent)' }}
+            initial={{ scaleX: 0, originX: 0 }}
+            whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
           />
-          <p className="text-gray-500 text-sm md:text-base mt-4">
-            Ranked by technical depth, uniqueness, and portfolio impact · all links go to
-            individual repos
-          </p>
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 gap-6 md:gap-7">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+        {/* ── Projects List (One by One) ── */}
+        <div className="space-y-8">
+          {projects.map((p, i) => (
+            <FeaturedCard key={p.id} project={p} index={i} />
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
