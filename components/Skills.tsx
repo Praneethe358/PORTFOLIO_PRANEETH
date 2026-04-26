@@ -278,7 +278,7 @@ const Skills = () => {
         </motion.div>
 
         {/* Proficiency Grid */}
-        <div className="grid grid-cols-1 gap-7">
+        <div className="grid grid-cols-1 gap-5 md:gap-7">
           {proficiencies.map((category, catIndex) => (
             <motion.div
               key={category.category}
