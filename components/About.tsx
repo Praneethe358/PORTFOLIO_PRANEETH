@@ -173,7 +173,7 @@ const About = () => {
 
               <motion.div
                 key="quickinfo"
-                className="space-y-2.5 mb-5"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 md:mb-5"
                 initial={{ opacity: 0, x: -30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
                 transition={{ duration: 0.5, ease, delay: 0.9 }}
@@ -184,19 +184,19 @@ const About = () => {
                   return (
                     <motion.div
                       key={item.label}
-                      className={`flex items-start gap-2.5 pb-2.5 ${index < quickInfo.length - 1 ? 'border-b border-white/10' : ''}`}
+                      className="flex items-start gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/5"
                       initial={{ opacity: 0, y: 14 }}
                       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
                       transition={{ duration: 0.4, delay: 1 + index * 0.12 }}
                     >
                       <span className={`mt-0.5 ${iconTone}`}>
-                        <item.icon className="h-3.5 w-3.5" />
+                        <item.icon className="h-4 w-4" />
                       </span>
                       <div>
-                        <p className={`text-[10px] uppercase tracking-[0.24em] ${labelTone}`}>
+                        <p className={`text-[10px] uppercase tracking-[0.24em] ${labelTone} mb-1`}>
                           {item.label}
                         </p>
-                        <p className="text-white text-[14px] font-semibold">
+                        <p className="text-white text-[13px] md:text-[14px] font-semibold leading-tight">
                           {item.value}
                         </p>
                       </div>
@@ -207,7 +207,7 @@ const About = () => {
 
               <motion.div
                 key="focus-label"
-                className="text-gray-400 text-[12px] uppercase tracking-[0.24em] mb-3 font-heading"
+                className="text-gray-400 text-[10px] md:text-[12px] uppercase tracking-[0.24em] mb-4 font-heading"
                 initial={{ opacity: 0, x: 80 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
                 transition={{ duration: 0.6, ease, delay: 1.25 }}
@@ -217,7 +217,7 @@ const About = () => {
 
               <motion.div
                 key="focus-pills"
-                className="flex flex-wrap gap-2.5 mb-6"
+                className="flex flex-wrap gap-2 md:gap-2.5 mb-8 md:mb-6"
                 initial={{ opacity: 0, y: 10 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                 transition={{ duration: 0.6, ease, delay: 1.35 }}
@@ -225,7 +225,7 @@ const About = () => {
                 {focusItems.map((item, idx) => (
                   <motion.span
                     key={item}
-                    className={`px-3 py-1 rounded-full text-xs font-medium border ${focusPillColors[idx % focusPillColors.length]}`}
+                    className={`px-3 py-1.5 rounded-full text-[11px] md:text-xs font-medium border ${focusPillColors[idx % focusPillColors.length]}`}
                     whileHover={{ y: -2, scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                   >
