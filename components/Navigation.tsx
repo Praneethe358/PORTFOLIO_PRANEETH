@@ -148,28 +148,59 @@ const Navigation = () => {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="md:hidden bg-bg-secondary/98 backdrop-blur-lg border-t border-white/5"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
+            className="fixed inset-0 top-[73px] z-[100] md:hidden"
+            initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            animate={{ opacity: 1, backdropFilter: 'blur(16px)' }}
+            exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
             transition={{ duration: 0.3 }}
           >
-            <div className="px-6 py-4 space-y-1">
-              {navItems.map((item, i) => (
-                <motion.a
-                  key={item.id}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block py-3 text-sm font-semibold tracking-widest text-gray-300 hover:text-accent transition-colors"
-                  custom={i}
-                  variants={menuItemVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                >
-                  {item.label}
-                </motion.a>
-              ))}
+            {/* Background overlay */}
+            <motion.div 
+              className="absolute inset-0 bg-[#030712]/95"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            />
+
+            <div className="relative h-full flex flex-col px-8 py-10">
+              <div className="flex flex-col gap-6">
+                {navItems.map((item, i) => (
+                  <motion.a
+                    key={item.id}
+                    href={item.href}
+                    onClick={() => {
+                      setActiveSection(item.id);
+                      setMobileOpen(false);
+                    }}
+                    className={`text-3xl font-black tracking-tighter transition-all duration-300 ${
+                      activeSection === item.id ? 'text-sky-400 pl-4' : 'text-gray-500 hover:text-white'
+                    } border-l-2 ${activeSection === item.id ? 'border-sky-400' : 'border-transparent'}`}
+                    custom={i}
+                    variants={menuItemVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                  >
+                    {item.label}
+                  </motion.a>
+                ))}
+              </div>
+
+              {/* Mobile Socials or Info can go here */}
+              <motion.div 
+                className="mt-auto pb-10 flex items-center gap-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-sky-400">
+                  <FaPhone size={18} />
+                </div>
+                <div>
+                  <p className="text-gray-500 text-xs uppercase tracking-widest font-bold">Get In Touch</p>
+                  <a href="tel:+919080689844" className="text-white font-bold">+91 9080689844</a>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         )}
