@@ -19,8 +19,7 @@ interface Project {
   meta: string;
   isLive?: boolean;
   github: string;
-  live?: string;
-  liveLabel?: string;
+
   featured?: boolean;
 }
 
@@ -174,23 +173,7 @@ const FeaturedCard = ({ project, index }: { project: Project; index: number }) =
                   <FaGithub size={15} />
                   GitHub
                 </motion.a>
-                {project.live && (
-                  <motion.a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300"
-                    style={{
-                      background: `linear-gradient(135deg, ${project.accentColor}CC 0%, ${project.accentColor}88 100%)`,
-                      color: '#0b0f1a',
-                    }}
-                    whileHover={{ scale: 1.03, filter: 'brightness(1.1)' }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    <FaExternalLinkAlt size={12} />
-                    {project.liveLabel ?? 'Live Site'}
-                  </motion.a>
-                )}
+
               </div>
             </div>
           </div>
@@ -240,8 +223,6 @@ const Projects = () => {
       meta: 'Live — real client',
       isLive: true,
       github: 'https://github.com/Praneethe358',
-      live: '#',
-      liveLabel: 'Live site',
     },
     {
       id: 3,
@@ -260,7 +241,6 @@ const Projects = () => {
       meta: 'Built',
       isLive: true,
       github: 'https://github.com/Praneethe358',
-      live: '#',
     },
     {
       id: 4,

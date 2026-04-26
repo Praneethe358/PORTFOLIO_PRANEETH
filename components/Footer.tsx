@@ -164,11 +164,7 @@ const Footer = () => {
             </motion.button>
           </div>
 
-          <div className="flex items-center gap-1.5 text-[11px] text-gray-600">
-            <span>Made with</span>
-            <FaHeart size={10} className="text-red-500/80 animate-pulse" />
-            <span>in Coimbatore</span>
-          </div>
+        
         </div>
       </div>
     </footer>
