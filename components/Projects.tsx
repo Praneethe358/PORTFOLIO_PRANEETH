@@ -19,7 +19,6 @@ interface Project {
   meta: string;
   isLive?: boolean;
   github: string;
-
   featured?: boolean;
 }
 
@@ -72,16 +71,16 @@ const FeaturedCard = ({ project, index }: { project: Project; index: number }) =
             }}
           />
 
-          <div className="relative p-8 md:p-10">
-            <div className="flex flex-col lg:flex-row gap-8">
+          <div className="relative p-6 md:p-10">
+            <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
               {/* Left: content */}
               <div className="flex-1">
                 {/* Header row */}
-                <div className="flex items-start justify-between gap-4 mb-5">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
                   <div className="flex items-center gap-3">
                     {/* Number badge */}
                     <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center font-mono font-bold text-sm flex-shrink-0 border"
+                      className="w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center font-mono font-bold text-xs md:text-sm flex-shrink-0 border"
                       style={{
                         background: `${project.accentColor}15`,
                         borderColor: `${project.accentColor}30`,
@@ -92,7 +91,7 @@ const FeaturedCard = ({ project, index }: { project: Project; index: number }) =
                     </div>
                     <div>
                       <span
-                        className="text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full border"
+                        className="text-[9px] md:text-[10px] font-semibold uppercase tracking-widest px-2 py-0.5 md:px-2.5 md:py-1 rounded-full border"
                         style={{
                           background: `${project.accentColor}10`,
                           borderColor: `${project.accentColor}30`,
@@ -104,7 +103,7 @@ const FeaturedCard = ({ project, index }: { project: Project; index: number }) =
                     </div>
                   </div>
                   {/* Status */}
-                  <div className="flex items-center gap-1.5 flex-shrink-0">
+                  <div className="flex items-center gap-1.5 flex-shrink-0 bg-white/[0.03] px-2 py-1 rounded-lg border border-white/5 w-fit">
                     <span className="relative flex h-2 w-2">
                       <span
                         className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${project.isLive ? 'bg-emerald-400' : 'bg-sky-400'}`}
@@ -113,26 +112,26 @@ const FeaturedCard = ({ project, index }: { project: Project; index: number }) =
                         className={`relative inline-flex rounded-full h-2 w-2 ${project.isLive ? 'bg-emerald-500' : 'bg-sky-500'}`}
                       />
                     </span>
-                    <span className="text-gray-500 text-xs">{project.meta}</span>
+                    <span className="text-gray-500 text-[10px] md:text-xs font-medium">{project.meta}</span>
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl md:text-3xl font-extrabold font-heading text-white mb-3 leading-tight">
+                <h3 className="text-xl md:text-3xl font-extrabold font-heading text-white mb-3 leading-tight">
                   {project.title}
                 </h3>
 
                 {/* Summary */}
-                <p className="text-gray-400 text-sm leading-relaxed mb-5 max-w-2xl">
+                <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-6 max-w-2xl">
                   {project.summary}
                 </p>
 
                 {/* Bullets */}
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-3 mb-8">
                   {project.bullets.map((b, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-gray-500">
+                    <li key={i} className="flex items-start gap-3 text-[11px] md:text-sm text-gray-400">
                       <span
-                        className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        className="mt-1.5 w-1 h-1 md:w-1.5 md:h-1.5 rounded-full flex-shrink-0"
                         style={{ background: project.accentColor }}
                       />
                       {b}
@@ -145,7 +144,7 @@ const FeaturedCard = ({ project, index }: { project: Project; index: number }) =
                   {project.tech.map((t, i) => (
                     <motion.span
                       key={i}
-                      className="text-xs px-3 py-1 rounded-full border border-white/[0.08] text-gray-400 transition-all duration-300"
+                      className="text-[10px] md:text-xs px-3 py-1 rounded-full border border-white/[0.08] text-gray-400 transition-all duration-300"
                       whileHover={{
                         borderColor: `${project.accentColor}60`,
                         color: project.accentColor,
@@ -160,20 +159,19 @@ const FeaturedCard = ({ project, index }: { project: Project; index: number }) =
               </div>
 
               {/* Right: links */}
-              <div className="flex lg:flex-col gap-3 lg:items-end justify-start lg:justify-center flex-shrink-0">
+              <div className="mt-8 lg:mt-0 flex lg:flex-col gap-3 lg:items-end justify-start lg:justify-center flex-shrink-0">
                 <motion.a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/[0.08] text-sm text-gray-300 font-medium transition-all duration-300 hover:border-white/20 hover:text-white"
+                  className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-white/[0.08] text-xs md:text-sm text-gray-300 font-medium transition-all duration-300 hover:border-white/20 hover:text-white"
                   style={{ background: 'rgba(255,255,255,0.03)' }}
                   whileHover={{ x: 2 }}
                   whileTap={{ scale: 0.97 }}
                 >
                   <FaGithub size={15} />
-                  GitHub
+                  Source Code
                 </motion.a>
-
               </div>
             </div>
           </div>
