@@ -152,7 +152,7 @@ const Hero = ({ animate: ready = false }: { animate?: boolean }) => {
         animate={ready ? { opacity: 1, y: 0 } : hidden}
         transition={{ duration: 0.6, delay: 0.85 }}
       >
-        <div className="flex items-center gap-4 bg-bg-secondary/80 backdrop-blur-md rounded-full px-6 py-3 border border-white/5">
+        <div className="flex items-center gap-6 md:gap-4 bg-bg-secondary/80 backdrop-blur-md rounded-full px-6 py-3 border border-white/5">
           <motion.a
             href="https://github.com/Praneethe358"
             target="_blank"
