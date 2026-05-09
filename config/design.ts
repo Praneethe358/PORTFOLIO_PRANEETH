@@ -2,9 +2,9 @@
 
 export const COLORS = {
   // Primary Accent — Blue Gradient
-  accent: '#38bdf8',
-  accentDark: '#2563eb',
-  accentLight: '#60a5fa',
+  accent: '#60a5fa',
+  accentDark: '#1d4ed8',
+  accentLight: '#93c5fd',
 
   // Neutrals
   white: '#ffffff',
@@ -20,9 +20,9 @@ export const COLORS = {
   gray900: '#111827',
 
   // Backgrounds
-  bg: '#0b0f1a',
-  bgSecondary: '#101525',
-  bgCard: '#131830',
+  bg: '#02040a',
+  bgSecondary: '#050816',
+  bgCard: '#0f172a',
 };
 
 export const ANIMATIONS = {
@@ -69,8 +69,8 @@ export const SHADOWS = {
   md: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
   lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
   xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
-  glow: '0 0 20px rgba(56, 189, 248, 0.3)',
-  glowLarge: '0 0 40px rgba(56, 189, 248, 0.5)',
+  glow: '0 0 20px rgba(96, 165, 250, 0.3)',
+  glowLarge: '0 0 40px rgba(59, 130, 246, 0.5)',
 };
 
 export const TYPOGRAPHY = {
