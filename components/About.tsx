@@ -242,7 +242,8 @@ const About = () => {
                 transition={{ duration: 0.6, ease, delay: 1.75 }}
               >
                 <motion.a
-                  href="#"
+                  href="/PRANEETH-RESUME.docx"
+                  download
                   className="btn-outline inline-block"
                   whileHover={{ scale: 1.06, filter: 'brightness(1.15)' }}
                   whileTap={{ scale: 0.96 }}
